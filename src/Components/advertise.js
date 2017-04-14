@@ -204,7 +204,7 @@ class AdvertiseProducts extends React.Component {
                 disclaimer: this.refs.disclaimer.value,
                 company: this.refs.company.value,
                 shipping: this.refs.shipping.value,
-                price
+                price: this.refs.price.value
             })
         };
 

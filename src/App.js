@@ -161,7 +161,6 @@ class CouponFilter extends React.Component {
                     <p>By Company:</p>
                     <select onChange={(e) => this.handleCompanyLetterClick(e.target.value)}>
                         { this.state.alphabet.map((letter, i) =>
-
                             <option key={i}>{letter}</option>
                         ) }
                     </select>
@@ -193,7 +192,10 @@ class CouponContainer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {coupons: []};
+        this.state = {
+            featuredCoupons: [],
+            regularCoupons: []
+        };
     }
 
     updateCompanyFilter = (e) => {
@@ -203,7 +205,8 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({coupons})
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({featured: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -216,7 +219,8 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({coupons})
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({featured: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
@@ -229,7 +233,8 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({coupons})
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({featured: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
@@ -242,7 +247,8 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({coupons})
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({featured: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -254,7 +260,8 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({coupons})
+            this.setState({featuredCoupons: coupons[0].featured});
+            this.setState({regularCoupons: coupons[0].regular})
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -274,11 +281,11 @@ class CouponContainer extends React.Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-7 coupon-wrapper--left">
-                                <CouponCard couponView={this.state.coupons}/>
+                                <CouponCard couponView={this.state.regularCoupons}/>
                             </div>
 
                             <div className="col-md-3 coupon-wrapper--right text-center">
-                                <Coupons coupons={this.state.coupons}/>
+                                <Coupons coupons={this.state.featuredCoupons}/>
                             </div>
 
                         </div>
