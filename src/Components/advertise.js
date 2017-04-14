@@ -170,7 +170,7 @@ class AdvertiseProducts extends React.Component {
     handlePriceChange = (evt) => {
         if (evt.target.value.toString().length > 6 ) {
             alert('No longer than 5 characters!')
-        } else if (!this.isNumeric(evt.target.value || !evt.target.value.contains('.'))) {
+        } else if (!this.isNumeric(evt.target.value || !evt.target.value.includes('.'))) {
             alert('Only numbers allowed');
         } else {
             this.setState({price: evt.target.value})
@@ -178,6 +178,15 @@ class AdvertiseProducts extends React.Component {
     };
 
     handleCouponSubmit = (evt) => {
+
+
+        let price = this.refs.price.value;
+        if (price.includes('.00') !== true) {
+           price = price.split('');
+           price.push('.00');
+           price = price.join('');
+           console.log(price);
+        }
 
 
 
@@ -195,7 +204,7 @@ class AdvertiseProducts extends React.Component {
                 disclaimer: this.refs.disclaimer.value,
                 company: this.refs.company.value,
                 shipping: this.refs.shipping.value,
-                price: this.refs.price.value
+                price
             })
         };
 

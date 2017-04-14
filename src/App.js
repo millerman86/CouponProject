@@ -23,6 +23,12 @@ const CouponCard = (props) => (
 
                         <div className="coupon-card--price col-xs-12">
                             {coupon.deal}
+                            <div className='float-right'>
+                                {coupon.price}
+                            </div>
+                            <div className='description'>
+                                {coupon.description}
+                            </div>
                         </div>
                     </div>
                     <div className="coupon-card--free-shipping row">
@@ -95,7 +101,36 @@ class CouponFilter extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            alphabet: [
+                'A',
+                'B',
+                'C',
+                'D',
+                'E',
+                'F',
+                'G',
+                'H',
+                'I',
+                'J',
+                'K',
+                'L',
+                'M',
+                'N',
+                'O',
+                'P',
+                'Q',
+                'R',
+                'S',
+                'T',
+                'U',
+                'V',
+                'W',
+                'X',
+                'Y',
+                'Z'
+            ]
+        };
     }
 
     handleDealClick = (e) => {
@@ -112,10 +147,11 @@ class CouponFilter extends React.Component {
         this.props.productFilter(e);
     };
 
+
     handlePriceAdjust = (e) => {
-        console.log(e);
         this.props.priceFilter(e);
     };
+
 
     render() {
         return (
@@ -124,61 +160,16 @@ class CouponFilter extends React.Component {
                 <div className='coupon-filter--filters'>
                     <p>By Company:</p>
                     <select onChange={(e) => this.handleCompanyLetterClick(e.target.value)}>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-                        <option>F</option>
-                        <option>G</option>
-                        <option>H</option>
-                        <option>I</option>
-                        <option>J</option>
-                        <option>K</option>
-                        <option>L</option>
-                        <option>M</option>
-                        <option>N</option>
-                        <option>O</option>
-                        <option>P</option>
-                        <option>Q</option>
-                        <option>R</option>
-                        <option>S</option>
-                        <option>T</option>
-                        <option>U</option>
-                        <option>V</option>
-                        <option>W</option>
-                        <option>X</option>
-                        <option>Y</option>
-                        <option>Z</option>
+                        { this.state.alphabet.map((letter, i) =>
+
+                            <option key={i}>{letter}</option>
+                        ) }
                     </select>
                     <p>By Product</p>
                     <select onChange={(e) => this.handleProductLetterClick(e.target.value)}>
-                        <option>A</option>
-                        <option>B</option>
-                        <option>C</option>
-                        <option>D</option>
-                        <option>E</option>
-                        <option>F</option>
-                        <option>G</option>
-                        <option>H</option>
-                        <option>I</option>
-                        <option>J</option>
-                        <option>K</option>
-                        <option>L</option>
-                        <option>M</option>
-                        <option>N</option>
-                        <option>O</option>
-                        <option>P</option>
-                        <option>Q</option>
-                        <option>R</option>
-                        <option>S</option>
-                        <option>T</option>
-                        <option>U</option>
-                        <option>V</option>
-                        <option>W</option>
-                        <option>X</option>
-                        <option>Y</option>
-                        <option>Z</option>
+                        { this.state.alphabet.map((letter, i) =>
+                            <option key={i}>{letter}</option>
+                        ) }
                     </select>
                     <p>By deal</p>
                     <select onChange={(e) => this.handleDealClick(e.target.value)}>
