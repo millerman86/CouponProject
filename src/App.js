@@ -103,6 +103,7 @@ class CouponFilter extends React.Component {
 
         this.state = {
             alphabet: [
+                '',
                 'A',
                 'B',
                 'C',
@@ -205,8 +206,7 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-            this.setState({regularCoupons: coupons[0].regular});
-            this.setState({featured: coupons[0].featured});
+            this.setState({regularCoupons: coupons});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -220,7 +220,7 @@ class CouponContainer extends React.Component {
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
             this.setState({regularCoupons: coupons[0].regular});
-            this.setState({featured: coupons[0].featured});
+            this.setState({featuredCoupons: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
@@ -260,8 +260,9 @@ class CouponContainer extends React.Component {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
+
             this.setState({featuredCoupons: coupons[0].featured});
-            this.setState({regularCoupons: coupons[0].regular})
+            this.setState({regularCoupons: coupons[0].regular});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })

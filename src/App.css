@@ -166,14 +166,7 @@
 .coupon-card--price {
   padding-left: 20px;
 }
-.coupon-card--price::after{
-  font-family: "fontastic";
-  content: "\61";
-  color: red;
-  margin-left: 5px;
-  position: relative;
-  top: 1px;
-}
+
 
 .coupon-wrapper--right{
   margin: 0 auto;
@@ -271,7 +264,7 @@
 
 .float-right {
   float: right;
-  line-height: 22px;
+  line-height: 18px;
 }
 
 .black-letters {
