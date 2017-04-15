@@ -6,6 +6,17 @@ import {Link} from 'react-router-dom';
 import '../App.js'
 
 
+let randomFixedInteger = function (length) {
+    return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
+};
+
+// import UUID from 'simply-uuid';
+//
+// const createId = () => {
+//     return UUID.generate();
+// };
+
+
 let cents = [
     '.00',
     '.01',
@@ -117,16 +128,16 @@ const myAuth = {
     }
 };
 
-
-const dataLoadFunction = {
-    username: function () {
-        return sessionStorage.getItem('username');
-    },
-
-    usertype: function () {
-        return sessionStorage.getItem('usertype');
-    }
-};
+//
+// const dataLoadFunction = {
+//     username: function () {
+//         return sessionStorage.getItem('username');
+//     },
+//
+//     usertype: function () {
+//         return sessionStorage.getItem('usertype');
+//     }
+// };
 
 
 const AdvertiseSwitch = () => {
@@ -218,12 +229,16 @@ class Advertise extends React.Component {
 }
 
 
+const isNumeric = (n) => {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+
 class AdvertiseProducts extends React.Component {
 
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             fields: {
@@ -231,13 +246,10 @@ class AdvertiseProducts extends React.Component {
                 email: ''
             },
 
-            // username: sessionStorage.getItem('');
-
             fieldErrors: {},
             people: [],
             id: 'ID',
-            description: '(Description: Max=60) Please include spaces!',
-            product: '(Product)',
+            product: '(Description: Max=60) Please include spaces!',
             deal: '(Deal)',
             offer: '',
             condition: '',
@@ -249,12 +261,13 @@ class AdvertiseProducts extends React.Component {
         };
     }
 
-
     handleIdChange = (evt) => {
         if (evt.target.value.toString().length > 8) {
             alert("No longer than 8 characters!");
+        } else if (!isNumeric(evt.target.value)) {
+            this.setState({id: ''});
         }
-        this.setState({id: evt.target.value});
+        this.setState({id: evt.target.value})
     };
 
     handleShippingChange = (evt) => {
@@ -265,46 +278,33 @@ class AdvertiseProducts extends React.Component {
 
     };
 
-    // isNumeric = (n) => {
-    //     return !isNaN(parseFloat(n)) && isFinite(n);
-    // };
-    //
-    // validatedPrice = (price) => {
-    //
-    //
-    //     if (this.validatedPrice(price))
-    //         if (!String(price).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
-    //             alert("Enter price only. For example: 523.36 or $523.36");
-    //
-    //         } else {
-    //             return true
-    //         }
-    // };
-
-
     handlePriceChange = (evt) => {
+
         if (evt.target.value.toString().length > 6) {
-            alert('No longer than 5 characters!');
-        }
-        for (let verifier of cents) {
-            if (evt.target.value.includes(verifier)) {
-                if (!String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
-                    alert("Enter price only. For example: 523.36 or $523.36");
+            alert('No longer than 6 characters!');
+        } else if (evt.target.value.length > 1) {
+            if (!isNumeric(evt.target.value)) {
+                alert('Only numbers allowed!');
+            } else if (evt.target.value.length > 1) {
+                for (let verifier of cents) {
+                    if (evt.target.value.includes(verifier)) {
+                        if (!String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
+                            alert("Enter price only. For example: 523.36 or $523.36. Price must be above $1");
+                        }
+                        else if (!evt.target.value.includes('$')
+                            && String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
+                            this.setState({price: "$" + evt.target.value})
+                        } else if (!isNumeric(evt.target.value)) {
+                            alert('Only numbers allowed!');
+                            return
+                        }
+                    } else {
+                        this.setState({price: '$' + evt.target.value});
+                    }
                 }
-                else if (!evt.target.value.includes('$')) {
-                    this.setState({price: "$" + evt.target.value})
-                }
-            } else {
-                this.setState({price: evt.target.value})
             }
         }
-            // this.setState({price: evt.target.value});
     };
-
-
-    // && evt.target.value.includes('.')
-    // else if ()) {
-    // alert('Only numbers allowed');
 
     handleDealChange = (evt) => {
         let deal = this.refs.deal.value;
@@ -314,8 +314,47 @@ class AdvertiseProducts extends React.Component {
         this.setState({deal: deal});
     };
 
+    onDealSelect = (evt) => {
+        this.setState({deal: '%' + evt.target.value + ' OFF'});
+    };
 
     handleCouponSubmit = (evt) => {
+
+        evt.preventDefault();
+
+        let id = this.refs.id.value;
+        let product = this.refs.product.value;
+        let deal = this.refs.deal.value;
+        let offer = this.refs.offer.value;
+        let condition = this.refs.condition.value;
+        let disclaimer = this.refs.disclaimer.value;
+        let company = this.refs.company.value;
+        let shipping = this.refs.shipping.value;
+        let price = this.state.price;
+
+        if (id === '') {
+            id = randomFixedInteger(8);
+            console.log(id);
+        } else if (!isNumeric(id)) {
+            return
+        }
+
+        price = price.split('');
+        delete price[(price.indexOf('$'))];
+        price = price.join('');
+
+        // function has$(value) {
+        //     return value == '$';
+        // }
+
+        // console.log(price.find(function(element))
+        // })
+        //
+        //
+        // price.join('');
+        //
+        // console.log(price + "you did it!");
+
 
         let myInit = {
             method: 'post',
@@ -323,19 +362,18 @@ class AdvertiseProducts extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                id: this.refs.id.value,
-                product: this.refs.product.value,
-                deal: this.refs.deal.value,
-                offer: this.refs.offer.value,
-                condition: this.refs.condition.value,
-                disclaimer: this.refs.disclaimer.value,
-                company: this.refs.company.value,
-                shipping: this.refs.shipping.value,
-                price: this.refs.price.value
+                id,
+                product,
+                deal,
+                offer,
+                condition,
+                disclaimer,
+                company,
+                shipping,
+                price,
             })
         };
 
-        evt.preventDefault();
 
         fetch(`http://localhost:4000/v1/coupons`, myInit)
             .then(function (response) {
@@ -351,16 +389,6 @@ class AdvertiseProducts extends React.Component {
 
     };
 
-
-    // let price = this.refs.price.value;
-    // if (price.includes('.00') !== true) {
-    //     price = price.split('');
-    //     price.push('.00');
-    //     price = price.join('');
-    //     console.log(price);
-    // }
-
-
     render() {
         return (
             <div >
@@ -372,7 +400,7 @@ class AdvertiseProducts extends React.Component {
 
                     >
                         <div className="coupon-card--image-wrap">
-                            <img />
+                            <img alt=''/>
                             <div className="coupon-card--company col-xs-3">
                                 {this.state.company}
                             </div>
@@ -385,7 +413,7 @@ class AdvertiseProducts extends React.Component {
                                     {this.state.price}
                                 </div>
                                 <div className='description'>
-                                    {this.state.description}
+                                    {this.state.product}
                                 </div>
                             </div>
                         </div>
@@ -425,12 +453,13 @@ class AdvertiseProducts extends React.Component {
                     <form onSubmit={this.handleCouponSubmit}>
                         <input type='text' placeholder='ID max=8'
                                ref='id'
+                               defaultValue=''
                                onChange={this.handleIdChange}
                         />
                         Put in your own id or have one generated for you!
                         <br />
                         <input type='text' placeholder='Product/Description'
-                               maxLength='60'
+                               maxLength='70'
                                ref='product'
                                onChange={e => this.setState({product: e.target.value})}
                         />
@@ -440,6 +469,28 @@ class AdvertiseProducts extends React.Component {
                                ref='deal'
                                onChange={this.handleDealChange}
                         />
+                        Or % OFF
+                        <select onChange={this.onDealSelect}>
+                            <option>5</option>
+                            <option>10</option>
+                            <option>15</option>
+                            <option>20</option>
+                            <option>25</option>
+                            <option>30</option>
+                            <option>35</option>
+                            <option>40</option>
+                            <option>45</option>
+                            <option>50</option>
+                            <option>55</option>
+                            <option>60</option>
+                            <option>65</option>
+                            <option>70</option>
+                            <option>75</option>
+                            <option>80</option>
+                            <option>85</option>
+                            <option>90</option>
+                            <option>95</option>
+                        </select>
                         <br />
                         <input type='text' placeholder='Offer'
                                ref='offer'
@@ -483,3 +534,29 @@ class AdvertiseProducts extends React.Component {
 
 
 export default AdvertiseSwitch;
+
+
+// let price = this.refs.price.value;
+// if (price.includes('.00') !== true) {
+//     price = price.split('');
+//     price.push('.00');
+//     price = price.join('');
+//     console.log(price);
+// }
+
+
+// isNumeric = (n) => {
+//     return !isNaN(parseFloat(n)) && isFinite(n);
+// };
+//
+// validatedPrice = (price) => {
+//
+//
+//     if (this.validatedPrice(price))
+//         if (!String(price).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
+//             alert("Enter price only. For example: 523.36 or $523.36");
+//
+//         } else {
+//             return true
+//         }
+// };
