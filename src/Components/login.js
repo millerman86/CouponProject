@@ -78,7 +78,7 @@ class Login extends React.Component {
                             </div>
                             <div className='col-xs-2'>
                                 <label>Password</label>
-                                <input type="text" name="Password" ref='password' placeholder="Password"/>
+                                <input type="password" name="Password" ref='password' placeholder="Password"/>
                                 <br />
                                 <br />
                                 <button className="ui button" type="submit">Submit</button>

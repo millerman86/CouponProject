@@ -11,10 +11,10 @@ class CreateAccount extends React.Component {
 
 
     handleSubmit = (evt) => {
-        if (this.refs.password === this.refs.passwordverify) {
+        if (this.refs.password.value === this.refs.passwordverify.value) {
             evt.preventDefault();
             let myInit = {
-                method: 'post',
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -35,6 +35,8 @@ class CreateAccount extends React.Component {
                 console.log('parsing failed', ex)
             });
 
+        } else {
+            return alert('Password matching failed');
         }
     };
 
@@ -50,7 +52,7 @@ class CreateAccount extends React.Component {
                         <div className='col-xs-1'>
                         </div>
                         <div className='col-xs-2'>
-                            <h3>LOGIN</h3>
+                            <h3>Create a User Account</h3>
                             <label >Username or Email</label>
                             <input type="text" ref='username' name="username" placeholder="Username"/>
                         </div>
@@ -61,8 +63,8 @@ class CreateAccount extends React.Component {
                             </div>
                             <div className='col-xs-2'>
                                 <label>Password</label>
-                                <input type="text" name="Password" ref='password' placeholder="Password"/>
-                                <input type="text" name="Password" ref='passwordverify' placeholder="Verify Password"/>
+                                <input type="password" name="Password" ref='password' placeholder="Password"/>
+                                <input type="password" name="Password" ref='passwordverify' placeholder="Verify Password"/>
                                 <br />
                                 <br />
                                 <button className="ui button" type="submit">Submit</button>

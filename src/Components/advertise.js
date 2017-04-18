@@ -10,13 +10,6 @@ let randomFixedInteger = function (length) {
     return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
 };
 
-// import UUID from 'simply-uuid';
-//
-// const createId = () => {
-//     return UUID.generate();
-// };
-
-
 let cents = [
     '.00',
     '.01',
@@ -120,25 +113,12 @@ let cents = [
     '.99',
 ];
 
-
 const myAuth = {
     isAuthenticated: function () {
         const result = sessionStorage.getItem('token');
         return !!result && (sessionStorage.getItem('usertype') === 'company');
     }
 };
-
-//
-// const dataLoadFunction = {
-//     username: function () {
-//         return sessionStorage.getItem('username');
-//     },
-//
-//     usertype: function () {
-//         return sessionStorage.getItem('usertype');
-//     }
-// };
-
 
 const AdvertiseSwitch = () => {
     if (myAuth.isAuthenticated()) {
@@ -168,8 +148,6 @@ class Advertise extends React.Component {
                 password: this.refs.password.value,
             })
         };
-
-        // sessionStorage.setItem('sessionUsername', sessionUsername);
 
         evt.preventDefault();
         fetch(`http://localhost:4000/v1/createuser`, myInit)
@@ -220,22 +198,17 @@ class Advertise extends React.Component {
                             </div>
                         </div>
                     </div>
-
-
                 </form>
             </div>
         )
     }
 }
 
-
 const isNumeric = (n) => {
     return !isNaN(parseFloat(n)) && isFinite(n);
 };
 
-
 class AdvertiseProducts extends React.Component {
-
 
     constructor(props) {
         super(props);
@@ -245,7 +218,6 @@ class AdvertiseProducts extends React.Component {
                 name: '',
                 email: ''
             },
-
             fieldErrors: {},
             people: [],
             id: 'ID',
@@ -257,7 +229,9 @@ class AdvertiseProducts extends React.Component {
             company: '(Company Name)',
             companycache: '',
             price: '(Price)',
-            shipping: '(Shipping)'
+            shipping: '(Shipping)',
+            component: 'Regular',
+            priceError: '',
         };
     }
 
@@ -271,8 +245,8 @@ class AdvertiseProducts extends React.Component {
     };
 
     handleShippingChange = (evt) => {
-        if (evt.target.value.toString().length > 15) {
-            alert('No longer than 15 characters!');
+        if (evt.target.value.length > 25) {
+            alert('No longer than 25 characters!');
         }
         this.setState({shipping: evt.target.value});
 
@@ -282,10 +256,10 @@ class AdvertiseProducts extends React.Component {
 
         if (evt.target.value.toString().length > 6) {
             alert('No longer than 6 characters!');
-        } else if (evt.target.value.length > 1) {
+        } else if (evt.target.value.length > 0) {
             if (!isNumeric(evt.target.value)) {
-                alert('Only numbers allowed!');
-            } else if (evt.target.value.length > 1) {
+                alert('Only numbers allowed and values above $1 are allowed');
+            } else if (evt.target.value.length >= 1) {
                 for (let verifier of cents) {
                     if (evt.target.value.includes(verifier)) {
                         if (!String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
@@ -306,16 +280,24 @@ class AdvertiseProducts extends React.Component {
         }
     };
 
-    handleDealChange = (evt) => {
-        let deal = this.refs.deal.value;
-        if (deal.length > 7) {
-            alert('No longer than 7 characters!')
-        }
-        this.setState({deal: deal});
-    };
+    // handleDealChange = (evt) => {
+    //     let deal = this.refs.deal.value;
+    //     if (deal.length > 7) {
+    //         alert('No longer than 7 characters!')
+    //     }
+    //     this.setState({deal: deal});
+    // };
 
     onDealSelect = (evt) => {
-        this.setState({deal: '%' + evt.target.value + ' OFF'});
+        this.setState({deal: '%' + evt.target.value + ' ' + 'OFF'});
+    };
+
+    onDealTypeSelect = (evt) => {
+        if (evt.target.value === 'Select Deal') {
+            return
+        } else {
+            this.setState({ deal: evt.target.value });
+        }
     };
 
     handleCouponSubmit = (evt) => {
@@ -324,37 +306,39 @@ class AdvertiseProducts extends React.Component {
 
         let id = this.refs.id.value;
         let product = this.refs.product.value;
-        let deal = this.refs.deal.value;
+        let deal = this.state.deal;
         let offer = this.refs.offer.value;
         let condition = this.refs.condition.value;
         let disclaimer = this.refs.disclaimer.value;
         let company = this.refs.company.value;
-        let shipping = this.refs.shipping.value;
-        let price = this.state.price;
+        let shipping = this.state.shipping;
+        let price;
+
+        if (!(
+            product
+            && deal
+            && offer
+            && condition
+            && disclaimer
+            && company)) {
+            return
+        }
+
+        if (this.state.price === '(Price)') {
+            this.state.priceError = "You must enter a price to submit a coupon.";
+            return
+        } else {
+            price = this.state.price;
+        }
 
         if (id === '') {
             id = randomFixedInteger(8);
-            console.log(id);
-        } else if (!isNumeric(id)) {
-            return
         }
 
         price = price.split('');
         delete price[(price.indexOf('$'))];
         price = price.join('');
-
-        // function has$(value) {
-        //     return value == '$';
-        // }
-
-        // console.log(price.find(function(element))
-        // })
-        //
-        //
-        // price.join('');
-        //
-        // console.log(price + "you did it!");
-
+        price = parseFloat(price).toFixed(2);
 
         let myInit = {
             method: 'post',
@@ -374,7 +358,6 @@ class AdvertiseProducts extends React.Component {
             })
         };
 
-
         fetch(`http://localhost:4000/v1/coupons`, myInit)
             .then(function (response) {
                 return response.json()
@@ -383,21 +366,15 @@ class AdvertiseProducts extends React.Component {
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
-
         this.setState({companycache: `${this.refs.company.value} will now be saved for future submissions unless changed`});
-
-
     };
 
     render() {
         return (
-            <div >
-
+            <div>
                 <div className="CouponViewContainer">
-
                     <div
                         className="CouponCard center-align"
-
                     >
                         <div className="coupon-card--image-wrap">
                             <img alt=''/>
@@ -406,9 +383,10 @@ class AdvertiseProducts extends React.Component {
                             </div>
                         </div>
                         <div className="coupon-card--meta row">
-
                             <div className="coupon-card--price col-xs-12">
+
                                 {this.state.deal}
+
                                 <div className='float-right'>
                                     {this.state.price}
                                 </div>
@@ -422,9 +400,6 @@ class AdvertiseProducts extends React.Component {
                             <div className="col-xs-12">
                                 <div className="button"><span className="tiny-text">{this.state.shipping}</span></div>
                             </div>
-                            {/*<div className="col-xs-6">*/}
-                            {/*<div className="button"></div>*/}
-                            {/*</div>*/}
                         </div>
                         <div className="coupon-card--buttons row">
                             <div className="col-xs-6 border-right">
@@ -435,7 +410,6 @@ class AdvertiseProducts extends React.Component {
                                 <div className="card-button text-center comment-button"><i
                                     className="icon-button icon-comment"></i></div>
                             </div>
-
                         </div>
                         <div className='row'>
                             <div className='col-xs-12'>
@@ -463,14 +437,18 @@ class AdvertiseProducts extends React.Component {
                                ref='product'
                                onChange={e => this.setState({product: e.target.value})}
                         />
-
                         <br />
-                        <input type='text' placeholder='Deal'
-                               ref='deal'
-                               onChange={this.handleDealChange}
-                        />
+                        <select ref='other'
+                            onChange={this.onDealTypeSelect}>
+                            <option default>Select Deal</option>
+                            <option>2 for 1</option>
+                            <option>FREE *</option>
+                            <option>1/2 OFF</option>
+                        </select>
                         Or % OFF
-                        <select onChange={this.onDealSelect}>
+                        <select ref='%'
+                            onChange={this.onDealSelect}>
+                            <option></option>
                             <option>5</option>
                             <option>10</option>
                             <option>15</option>
@@ -491,22 +469,11 @@ class AdvertiseProducts extends React.Component {
                             <option>90</option>
                             <option>95</option>
                         </select>
-                        <br />
-                        <input type='text' placeholder='Offer'
-                               ref='offer'
-                        />
+
                         <br /> <input type='text' placeholder='Price'
                                       ref='price'
                                       onChange={this.handlePriceChange}
                     />
-                        <br />
-                        <input type='text' placeholder='Condition'
-                               ref='condition'
-                        />
-                        <br />
-                        <input type='text' placeholder='Disclaimer'
-                               ref='disclaimer'
-                        />
                         <br />
                         <input type='text' placeholder='Company'
                                onChange={e => this.setState({company: e.target.value})}
@@ -519,21 +486,32 @@ class AdvertiseProducts extends React.Component {
                                ref='shipping'
                         />
                         <br />
+
+                        <input type='text' placeholder='Disclaimer'
+                               ref='disclaimer'
+                        />
+                        <input type='text' placeholder='Condition'
+                               ref='condition'
+                        />
+                        <input type='text' placeholder='Offer'
+                               ref='offer'
+                        />
+
                         <button type='submit' className='ui button '>Submit</button>
                     </form>
+
 
                 </div>
             </div>
         );
-
-
     }
-
-
 }
 
 
 export default AdvertiseSwitch;
+
+
+
 
 
 // let price = this.refs.price.value;
@@ -544,13 +522,11 @@ export default AdvertiseSwitch;
 //     console.log(price);
 // }
 
-
 // isNumeric = (n) => {
 //     return !isNaN(parseFloat(n)) && isFinite(n);
 // };
 //
 // validatedPrice = (price) => {
-//
 //
 //     if (this.validatedPrice(price))
 //         if (!String(price).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
@@ -559,4 +535,11 @@ export default AdvertiseSwitch;
 //         } else {
 //             return true
 //         }
+// };
+
+
+// import UUID from 'simply-uuid';
+//
+// const createId = () => {
+//     return UUID.generate();
 // };

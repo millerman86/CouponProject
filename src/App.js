@@ -1,8 +1,13 @@
 import React from 'react';
 import './App.css';
 // import CouponContainer from './CouponContainer/coupons.js';
-import mcdonalds from '../public/images/mcdonalds.png';
+import mcdonalds from '../public/images/strawberry-cake-8-inch.jpg';
 import MySlider from './Components/slider';
+
+
+const getUser = () => {
+    return sessionStorage.getItem('username');
+};
 
 const CouponCard = (props) => (
     <div className="CouponViewContainer">
@@ -24,21 +29,18 @@ const CouponCard = (props) => (
                         <div className="coupon-card--price col-xs-12">
                             {coupon.deal}
                             <div className='float-right'>
-                                {coupon.price}
+                                ${coupon.price.includes('.00') ? parseInt(coupon.price) : coupon.price}
                             </div>
                             <div className='description'>
-                                {coupon.description}
+                                {coupon.product}
                             </div>
                         </div>
                     </div>
                     <div className="coupon-card--free-shipping row">
                         <br />
                         <div className="col-xs-12">
-                            <div className="button"><span className="tiny-text">+ Free Shipping</span></div>
+                            <div className="button"><span className="tiny-text">+ Free shipping</span></div>
                         </div>
-                        {/*<div className="col-xs-6">*/}
-                        {/*<div className="button"></div>*/}
-                        {/*</div>*/}
                     </div>
                     <div className="coupon-card--buttons row">
                         <div className="col-xs-6 border-right">
@@ -53,8 +55,9 @@ const CouponCard = (props) => (
                     </div>
                     <div className='row'>
                         <div className='col-xs-12'>
-                            <div className="clip-button text-left">Clip <input type='checkbox'></input>
-                                <span className='col-xs-7 float-right coupon-code'>{coupon.code}263728391</span></div>
+                            <div className="clip-button text-left">Clip <input type='checkbox'
+                                                                               onClick={() => props.couponClip(coupon.id)}/>
+                                <span className='col-xs-7 float-right coupon-code'>{coupon.id}</span></div>
                         </div>
                     </div>
                 </div>
@@ -95,7 +98,6 @@ const Coupons = (props) => (
         }
     </div>
 );
-
 
 class CouponFilter extends React.Component {
     constructor(props) {
@@ -148,11 +150,9 @@ class CouponFilter extends React.Component {
         this.props.productFilter(e);
     };
 
-
     handlePriceAdjust = (e) => {
         this.props.priceFilter(e);
     };
-
 
     render() {
         return (
@@ -234,10 +234,37 @@ class CouponContainer extends React.Component {
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
             this.setState({regularCoupons: coupons[0].regular});
-            this.setState({featured: coupons[0].featured});
+            this.setState({featuredCoupons: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
+    };
+
+    handleCouponClip = (couponId) => {
+    console.log(getUser(), couponId);
+
+    let payload = {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            couponId,
+        })
+    };
+
+    fetch(`http://localhost:4000/v1/clipped/${getUser()}`, payload)
+        .then(function (response) {
+            return response.json()
+        }).then((coupons) => {
+        console.log('parsed coupons', coupons);
+        this.setState({regularCoupons: coupons[0].regular});
+        this.setState({featuredCoupons: coupons[0].featured});
+        this.forceUpdate();
+        console.log(this.state.regularCoupons);
+    }).catch(function (ex) {
+        console.log('parsing failed', ex)
+    })
     };
 
     updateProductFilter = (e) => {
@@ -248,7 +275,7 @@ class CouponContainer extends React.Component {
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
             this.setState({regularCoupons: coupons[0].regular});
-            this.setState({featured: coupons[0].featured});
+            this.setState({featuredCoupons: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -282,11 +309,14 @@ class CouponContainer extends React.Component {
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-md-7 coupon-wrapper--left">
-                                <CouponCard couponView={this.state.regularCoupons}/>
+                                <CouponCard couponView={this.state.regularCoupons}
+                                            couponClip={this.handleCouponClip}
+                                />
                             </div>
 
                             <div className="col-md-3 coupon-wrapper--right text-center">
-                                <Coupons coupons={this.state.featuredCoupons}/>
+                                <Coupons coupons={this.state.featuredCoupons}
+                                />
                             </div>
 
                         </div>

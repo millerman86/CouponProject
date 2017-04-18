@@ -7,29 +7,6 @@ import SubmitCoupons from './Components/submitcoupons.js';
 import {Redirect} from 'react-router-dom';
 import CreateAccount from './Components/createaccount.js';
 
-/*
-const PrivateRoute = ({ component, ...rest }) => (
-    <Route {...rest} render={props => (
-        myAuth.isAuthenticated ? (
-                React.createElement(component, props)
-            ) : (
-                <Redirect to={{
-                    pathname: '/Advertise',
-                    state: { from: props.location }
-                }}/>
-            )
-    )}/>
-);
-
-const myAuth = {
-    isAuthenticated: false,
-    authenticate(cb) {
-        this.isAuthenticated = true;
-        setTimeout(cb, 100);
-    }
-};
-*/
-
 
 const myAuth = {
     isAuthenticated: function () {

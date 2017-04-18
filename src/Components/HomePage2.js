@@ -67,7 +67,7 @@ class HomePage extends Component {
             <div>
                 <Banner logoutVisible={myAuth.isAuthenticated()}/>
                 <div className="ui seven buttons">
-                    <button className='ui button'><Link to='/homePage'><span className='black-letters'><i className='home icon'></i>Home</span></Link></button>
+                    <button className='ui button'><Link to='/homepage'><span className='black-letters'><i className='home icon'></i>Home</span></Link></button>
                     <button className="ui button"><Link to='/redirects'><span className='black-letters'><i className='location arrow icon'></i>Local</span></Link></button>
                     <button className='ui button'><Link to='/clearance'><span className='black-letters'><i className="dollar icon"></i>Clearance</span></Link></button>
                     <button className='ui button'><Link to='/search'><span className='black-letters'><i className='find icon'></i>Search Coupons</span></Link></button>
