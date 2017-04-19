@@ -137,33 +137,50 @@ const AdvertiseSwitch = () => {
 
 class Advertise extends React.Component {
 
-    handleLogin = (evt) => {
-        let myInit = {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: this.refs.identifier.value,
-                password: this.refs.password.value,
-            })
-        };
 
+
+
+
+    createCompanyAccount = (evt) => {
         evt.preventDefault();
-        fetch(`http://localhost:4000/v1/createuser`, myInit)
-            .then(function (response) {
-                return response.json()
-            }).then((coupons) => {
-            console.log('parsed coupons', coupons);
-        }).catch(function (ex) {
-            console.log('parsing failed', ex)
-        });
+
+        if (this.refs.password.value !== this.refs.passwordverify.value) {
+            alert("Passwords don't match");
+        } else if (this.refs.password.value === this.refs.passwordverify.value) {
+
+            let myInit = {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    usertype: 'company',
+                    username: this.refs.identifier.value,
+                    password: this.refs.password.value,
+                })
+            };
+
+
+            fetch(`http://localhost:4000/v1/createuser`, myInit)
+                .then(function (response) {
+                    return response.json()
+                }).then((response) => {
+                console.log('parsed coupons', response);
+                sessionStorage.setItem('usertype', response.type);
+                sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('username', response.username)
+            }).catch(function (ex) {
+                console.log('parsing failed', ex)
+            });
+        }
+
     };
+
 
     render() {
         return (
             <div>
-                <form className='ui form' onSubmit={this.handleLogin}>
+                <form className='ui form' onSubmit={this.createCompanyAccount}>
                     <div className='field'>
                         <div className='col-xs-12'>
                             <div className='col-xs-2'>
@@ -190,7 +207,9 @@ class Advertise extends React.Component {
                             </div>
                             <div className='col-xs-2'>
                                 <label >Password</label>
-                                <input type="text" ref="password" name='password' placeholder="Password"/>
+                                <input type="password" ref="password" name='password' placeholder="Password"/>
+                                <input type='password' ref="passwordverify" name='passwordverify' placeholder="Verify Password"/>
+
                                 <br />
                                 <br />
                                 <button className="ui button" type="submit">Submit</button>
@@ -325,7 +344,7 @@ class AdvertiseProducts extends React.Component {
         }
 
         if (this.state.price === '(Price)') {
-            this.state.priceError = "You must enter a price to submit a coupon.";
+            this.setState({ priceError: "You must enter a price to submit a coupon."});
             return
         } else {
             price = this.state.price;

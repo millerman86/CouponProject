@@ -55,9 +55,10 @@ const CouponCard = (props) => (
                     </div>
                     <div className='row'>
                         <div className='col-xs-12'>
-                            <div className="clip-button text-left">Clip <input type='checkbox'
-                                                                               onClick={() => props.couponClip(coupon.id)}/>
-                                <span className='col-xs-7 float-right coupon-code'>{coupon.id}</span></div>
+                            <div className="clip-button text-left"> <button onClick={() => props.couponClip(coupon.id)}><i className="cut icon" >
+
+                            </i>Clip</button>
+                                <span className='float-right coupon-code'>{coupon.id}</span></div>
                         </div>
                     </div>
                 </div>
@@ -99,40 +100,46 @@ const Coupons = (props) => (
     </div>
 );
 
+
+
+
+const alphabet = [
+    '',
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+    'G',
+    'H',
+    'I',
+    'J',
+    'K',
+    'L',
+    'M',
+    'N',
+    'O',
+    'P',
+    'Q',
+    'R',
+    'S',
+    'T',
+    'U',
+    'V',
+    'W',
+    'X',
+    'Y',
+    'Z'
+];
+
+
 class CouponFilter extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            alphabet: [
-                '',
-                'A',
-                'B',
-                'C',
-                'D',
-                'E',
-                'F',
-                'G',
-                'H',
-                'I',
-                'J',
-                'K',
-                'L',
-                'M',
-                'N',
-                'O',
-                'P',
-                'Q',
-                'R',
-                'S',
-                'T',
-                'U',
-                'V',
-                'W',
-                'X',
-                'Y',
-                'Z'
-            ]
+
         };
     }
 
@@ -150,6 +157,14 @@ class CouponFilter extends React.Component {
         this.props.productFilter(e);
     };
 
+    handleForwardClick = (e) => {
+        this.props.forwardPress(e);
+    };
+
+    handleBackwardClick = (e) => {
+        this.props.backwardPress(e);
+    };
+
     handlePriceAdjust = (e) => {
         this.props.priceFilter(e);
     };
@@ -161,13 +176,13 @@ class CouponFilter extends React.Component {
                 <div className='coupon-filter--filters'>
                     <p>By Company:</p>
                     <select onChange={(e) => this.handleCompanyLetterClick(e.target.value)}>
-                        { this.state.alphabet.map((letter, i) =>
+                        { alphabet.map((letter, i) =>
                             <option key={i}>{letter}</option>
                         ) }
                     </select>
                     <p>By Product</p>
                     <select onChange={(e) => this.handleProductLetterClick(e.target.value)}>
-                        { this.state.alphabet.map((letter, i) =>
+                        { alphabet.map((letter, i) =>
                             <option key={i}>{letter}</option>
                         ) }
                     </select>
@@ -180,7 +195,19 @@ class CouponFilter extends React.Component {
                     <br />
                     <br />
                     <p className='adjust-price'>Adjust Price</p>
-                    <MySlider priceFilter={this.handlePriceAdjust}/>
+                    <MySlider className='my-slider' priceFilter={this.handlePriceAdjust}/>
+
+
+                    <div className='remove-margin'>
+                        Back
+                        Forward
+                    </div>
+                    <div onClick={(e) => this.handleBackwardClick(this.props.pageBase)}>
+                        <i className='arrow circle outline left icon forward-back'></i>
+                    </div>
+                    <div onClick={(e) => this.handleForwardClick(this.props.resultsPerPage)}>
+                        <i className='arrow circle outline right icon forward-back'></i>
+                    </div>
                 </div>
             </div>
 
@@ -281,19 +308,56 @@ class CouponContainer extends React.Component {
         })
     };
 
+
+
+
+    forwardPress = (e) => {
+        console.log("also what the helio?");
+        fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=increase`)
+            .then(function (response) {
+                return response.json()
+            }).then((coupons) => {
+            console.log('parsed coupons', coupons);
+            this.setState({featuredCoupons: coupons[0].featured});
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({pageBase: coupons[0].pageBase});
+            this.setState({resultsPerPage: coupons[0].resultsPerPage});
+        }).catch(function (ex) {
+            console.log('parsing failed', ex)
+        })
+    };
+
+    backwardPress = (e) => {
+        console.log('what the helio!?');
+        fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=decrease`)
+            .then(function (response) {
+                return response.json()
+            }).then((coupons) => {
+            console.log('parsed coupons', coupons);
+            this.setState({featuredCoupons: coupons[0].featured});
+            this.setState({regularCoupons: coupons[0].regular});
+            this.setState({pageBase: coupons[0].pageBase});
+            this.setState({resultsPerPage: coupons[0].resultsPerPage});
+        }).catch(function (ex) {
+            console.log('parsing failed', ex)
+        })
+    };
+
     componentDidMount() {
         fetch("http://localhost:4000/v1/coupons")
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
-
             this.setState({featuredCoupons: coupons[0].featured});
             this.setState({regularCoupons: coupons[0].regular});
+            this.setState({pageBase: coupons[0].pageBase});
+            this.setState({resultsPerPage: coupons[0].resultsPerPage});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
     };
+
 
     render() {
         return (
@@ -304,6 +368,10 @@ class CouponContainer extends React.Component {
                                       companyFilter={this.updateCompanyFilter}
                                       productFilter={this.updateProductFilter}
                                       dealFilter={this.updateDealFilter}
+                                      forwardPress={this.forwardPress}
+                                      backwardPress={this.backwardPress}
+                                      pageBase={this.state.pageBase}
+                                      resultsPerPage={this.state.resultsPerPage}
                         />
                     </div>
                     <div className="container-fluid">

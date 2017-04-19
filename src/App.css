@@ -282,7 +282,7 @@
 }
 
 .coupon-code {
- margin-top: 0px;
+ margin-top: 5px;
 }
 
 .center {
@@ -303,4 +303,21 @@
 .warning {
   font-style: italic;
   color: red;
+}
+
+.forward-back {
+  position: relative;
+  /*padding-top: -15px;*/
+  font-size: 3em !important;
+}
+
+
+.my-slider {
+  padding-bottom: 5px;
+}
+
+.remove-margin {
+  padding-top: 3px;
+  padding-bottom: 3px;
+  font-size: 20px;
 }

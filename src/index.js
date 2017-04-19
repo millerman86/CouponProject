@@ -7,8 +7,8 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import uuid from 'uuid';
 import Routes from './router.js';
-import { Router, browserHistory, ConnectedRouter, routerMiddleware } from 'react-router-redux';
-// import promiseMiddleware from 'redux-promise';
+// import { Router, browserHistory, ConnectedRouter} from 'react-router-redux';
+// import promiseMiddleware from 'redux-promise'; routerMiddleware
 
 
 injectTapEventPlugin();

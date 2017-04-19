@@ -5,6 +5,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//
+//
+// const myAuth = {
+//     isAuthenticated: function () {
+//         const result = sessionStorage.getItem('token');
+//         return !!result;
+//     },
+//
+//     logout: function () {
+//         sessionStorage.removeItem('token');
+//     }
+// };
+
+
+
 
 class CreateAccount extends React.Component {
 
@@ -19,6 +34,7 @@ class CreateAccount extends React.Component {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
+                    usertype: 'user',
                     username: this.refs.username.value,
                     password: this.refs.password.value,
                 })
@@ -29,7 +45,11 @@ class CreateAccount extends React.Component {
                     return response.json()
                 }).then((token) => {
                 console.log('Here is your token', token);
-                sessionStorage.setItem('token', token);
+
+                sessionStorage.setItem('token', token.token);
+                sessionStorage.setItem('username', token.username);
+                sessionStorage.setItem('usertype', token.type);
+                console.log(token);
                 this.props.history.push('/HomePage');
             }).catch(function (ex) {
                 console.log('parsing failed', ex)
