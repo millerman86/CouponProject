@@ -6,7 +6,7 @@ import AdvertiseSwitch from './Components/advertise.js';
 import SubmitCoupons from './Components/submitcoupons.js';
 import {Redirect} from 'react-router-dom';
 import CreateAccount from './Components/createaccount.js';
-
+import Clearance from './Components/clearance';
 
 const myAuth = {
     isAuthenticated: function () {
@@ -43,6 +43,7 @@ export default () => (
                           path='/advertise'/>
             <Route path='/submitcoupons' component={SubmitCoupons} />
             <Route path='/createaccount' component={CreateAccount} />
+            <Route path='/clearance' component={Clearance} />
         </Switch>
     </div>
 </Router>

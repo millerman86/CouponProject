@@ -13,6 +13,8 @@ import {
     Redirect,
 } from 'react-router-dom';
 
+import '../App.css';
+
 
 
 const myAuth = {
@@ -56,7 +58,11 @@ const logoutButton = () => (
 
 const Banner = ({ component, ...rest }) => (
     <div className='Banner'>
-       <PrivateRoute path='/' component={logoutButton} />
+        <p className='banner-text'>Coupon Market</p>
+        <div className="logout-button">
+        <PrivateRoute path='/' component={logoutButton} />
+        </div>
+
     </div>
 );
 
@@ -75,6 +81,18 @@ class HomePage extends Component {
                     <button className='ui button'><Link to='/advertise'><span className='black-letters'><i className='announcement icon'></i>ADVERTISE</span></Link></button>
                 </div>
                 <CouponContainer />
+
+                <div className='footer'>
+                    <a href='#'>Amren Miller</a>
+                    <br />
+                    <a href='#'>(801)634-5110</a>
+                    <br />
+                    <a href='#'>amrenmiller@gmail.com</a>
+                    <br />
+                    <br />
+                    <br />
+
+                </div>
             </div>
         );
     }

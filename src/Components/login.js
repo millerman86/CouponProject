@@ -35,6 +35,9 @@ class Login extends React.Component {
             })
         };
 
+        sessionStorage.setItem('username', username);
+        console.log(sessionStorage.getItem('username'));
+
         fetch(`http://localhost:4000/v1/login`, myInit)
             .then(function (response) {
                 return response.json()
@@ -53,8 +56,6 @@ class Login extends React.Component {
         });
 
     };
-
-
     render() {
         return (
             <div>
@@ -78,7 +79,7 @@ class Login extends React.Component {
                             </div>
                             <div className='col-xs-2'>
                                 <label>Password</label>
-                                <input type="password" name="Password" ref='password' placeholder="Password"/>
+                                <input type="text" name="Password" ref='password' placeholder="Password"/>
                                 <br />
                                 <br />
                                 <button className="ui button" type="submit">Submit</button>

@@ -321,3 +321,28 @@
   padding-bottom: 3px;
   font-size: 20px;
 }
+
+
+.banner-text {
+  font-size: 60px;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.drop-zone {
+  margin: auto;
+  text-align: center;
+}
+
+.logout-button {
+  position: relative;
+  margin: auto;
+  margin-top: -50px;
+
+}
+
+.footer {
+  margin: auto;
+  text-align: center;
+  font-size: 27px;
+}

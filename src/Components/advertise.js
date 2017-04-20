@@ -4,7 +4,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import '../App.js'
-
+import dropzone from 'dropzone';
 
 let randomFixedInteger = function (length) {
     return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
@@ -19,8 +19,8 @@ let cents = [
     '.05',
     '.06',
     '.07',
-    '.08',
     '.09',
+    '.08',
     '.10',
     '.11',
     '.12',
@@ -116,7 +116,8 @@ let cents = [
 const myAuth = {
     isAuthenticated: function () {
         const result = sessionStorage.getItem('token');
-        return !!result && (sessionStorage.getItem('usertype') === 'company');
+        return true;
+        // !!result && (sessionStorage.getItem('usertype') === 'company');
     }
 };
 
@@ -251,6 +252,7 @@ class AdvertiseProducts extends React.Component {
             shipping: '(Shipping)',
             component: 'Regular',
             priceError: '',
+            image: undefined,
         };
     }
 
@@ -319,26 +321,32 @@ class AdvertiseProducts extends React.Component {
         }
     };
 
+    // onImageSubmit = (e) => {
+    //     e.preventDefault();
+    //     this.setState({image: e.target.element})
+    // };
+
     handleCouponSubmit = (evt) => {
 
         evt.preventDefault();
 
         let id = this.refs.id.value;
         let product = this.refs.product.value;
-        let deal = this.state.deal;
-        let offer = this.refs.offer.value;
-        let condition = this.refs.condition.value;
-        let disclaimer = this.refs.disclaimer.value;
         let company = this.refs.company.value;
         let shipping = this.state.shipping;
         let price;
 
+        // let deal = this.state.deal;
+        // let offer = this.refs.offer.value;
+        // let condition = this.refs.condition.value;
+        // let disclaimer = this.refs.disclaimer.value;
+
         if (!(
             product
-            && deal
-            && offer
-            && condition
-            && disclaimer
+            // && deal
+            // && offer
+            // && condition
+            // && disclaimer
             && company)) {
             return
         }
@@ -367,10 +375,10 @@ class AdvertiseProducts extends React.Component {
             body: JSON.stringify({
                 id,
                 product,
-                deal,
-                offer,
-                condition,
-                disclaimer,
+                // deal,
+                // offer,
+                // condition,
+                // disclaimer,
                 company,
                 shipping,
                 price,
@@ -396,7 +404,7 @@ class AdvertiseProducts extends React.Component {
                         className="CouponCard center-align"
                     >
                         <div className="coupon-card--image-wrap">
-                            <img alt=''/>
+                            <img alt='' src={this.state.image}/>
                             <div className="coupon-card--company col-xs-3">
                                 {this.state.company}
                             </div>
@@ -431,10 +439,12 @@ class AdvertiseProducts extends React.Component {
                             </div>
                         </div>
                         <div className='row'>
+
                             <div className='col-xs-12'>
-                                <div className="clip-button text-left">Clip <input type='checkbox'></input>
-                                    <span className='col-xs-7 float-right coupon-code'>{this.state.id}</span></div>
+                                <div className="clip-button text-left"> <button><i className='cut icon'></i>Clip</button>
+                                    <span className='float-right coupon-code'>{this.state.id}</span></div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -504,20 +514,21 @@ class AdvertiseProducts extends React.Component {
                                onChange={this.handleShippingChange}
                                ref='shipping'
                         />
-                        <br />
-
-                        <input type='text' placeholder='Disclaimer'
-                               ref='disclaimer'
-                        />
-                        <input type='text' placeholder='Condition'
-                               ref='condition'
-                        />
-                        <input type='text' placeholder='Offer'
-                               ref='offer'
-                        />
-
+                        <br/>
                         <button type='submit' className='ui button '>Submit</button>
+
+
                     </form>
+
+
+                    {/*<form action="" method="post" enctype="multipart/form-data">*/}
+                        {/*<input type="file" name="file" />*/}
+                    {/*</form>*/}
+
+
+
+
+
 
 
                 </div>
@@ -531,6 +542,44 @@ export default AdvertiseSwitch;
 
 
 
+/*
+ <form action="http://localhost:4000/v1/imagesubmit"
+ className="dropzone"
+ id="my-awesome-dropzone"></form>
+
+ */
+
+
+
+
+
+/*
+ <div className='row'>
+ <div className='col-md-12 drop-zone'>
+ <form action="url('image/do-upload')"
+ className='dropzone'
+ id='addImages'>
+ <h2>Drop your images here!</h2>
+
+
+ </form>
+ </div>
+ </div>
+ */
+
+/*
+<input type='text' placeholder='Offer'
+       ref='offer'
+/>
+
+<input type='text' placeholder='Disclaimer'
+       ref='disclaimer'
+/>
+<br />
+<input type='text' placeholder='Condition'
+ref='condition'
+    />
+    */
 
 
 // let price = this.refs.price.value;

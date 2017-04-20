@@ -1,8 +1,24 @@
 import React from 'react';
 import './App.css';
 // import CouponContainer from './CouponContainer/coupons.js';
-import mcdonalds from '../public/images/strawberry-cake-8-inch.jpg';
+// import mcdonalds from '../public/images/images.jpeg';
 import MySlider from './Components/slider';
+import  blender from '../public/images/blender.jpg';
+import  books from '../public/images/books.jpg';
+import  chocolatecake from '../public/images/chocolate-cake.jpg';
+import  clothes from '../public/images/clothes.jpg';
+import  computer from '../public/images/computer.jpg';
+import cupcakes  from '../public/images/cupcakes.jpg';
+import  food from '../public/images/food.jpg';
+import  headphones from '../public/images/headphones.jpg';
+import  lamp from '../public/images/lamp.jpg';
+import recordplayer from '../public/images/recordplayer.jpg';
+import  scooter from '../public/images/scooter.jpg';
+import  soda from '../public/images/soda.jpg';
+import  speakers from '../public/images/speakers.jpg';
+import  strawberrycake8inch from '../public/images/strawberry-cake-8-inch.jpg';
+import  table from '../public/images/table.jpg';
+import  toys from '../public/images/toys.jpg';
 
 
 const getUser = () => {
@@ -19,7 +35,7 @@ const CouponCard = (props) => (
                 >
                     <div className="coupon-card--image-wrap">
                         {/*<div divStyle="background-image: url("{mcdonaldsimg}")"></div> className="background-image"*/ }
-                        <img src={mcdonalds}/>
+                        <img src={props.products[index]}/>
                         <div className="coupon-card--company col-xs-3">
                             {coupon.company}
                         </div>
@@ -56,7 +72,6 @@ const CouponCard = (props) => (
                     <div className='row'>
                         <div className='col-xs-12'>
                             <div className="clip-button text-left"> <button onClick={() => props.couponClip(coupon.id)}><i className="cut icon" >
-
                             </i>Clip</button>
                                 <span className='float-right coupon-code'>{coupon.id}</span></div>
                         </div>
@@ -99,6 +114,79 @@ const Coupons = (props) => (
         }
     </div>
 );
+
+
+
+
+let products = [
+
+
+
+
+    blender,
+    books,
+    chocolatecake,
+    clothes,
+    computer,
+    cupcakes,
+    food,
+    headphones,
+    lamp,
+    recordplayer,
+    scooter,
+    soda,
+    speakers,
+    strawberrycake8inch,
+    table,
+    toys,blender,
+    books,
+    chocolatecake,
+    clothes,
+    computer,
+    cupcakes,
+    food,
+    headphones,
+    lamp,
+    recordplayer,
+    scooter,
+    soda,
+    speakers,
+    strawberrycake8inch,
+    table,
+    toys, blender,
+    books,
+    chocolatecake,
+    clothes,
+    computer,
+    cupcakes,
+    food,
+    headphones,
+    lamp,
+    recordplayer,
+    scooter,
+    soda,
+    speakers,
+    strawberrycake8inch,
+    table,
+    toys,blender,
+    books,
+    chocolatecake,
+    clothes,
+    computer,
+    cupcakes,
+    food,
+    headphones,
+    lamp,
+    recordplayer,
+    scooter,
+    soda,
+    speakers,
+    strawberrycake8inch,
+    table,
+    toys,
+];
+
+
 
 
 
@@ -197,7 +285,6 @@ class CouponFilter extends React.Component {
                     <p className='adjust-price'>Adjust Price</p>
                     <MySlider className='my-slider' priceFilter={this.handlePriceAdjust}/>
 
-
                     <div className='remove-margin'>
                         Back
                         Forward
@@ -222,7 +309,9 @@ class CouponContainer extends React.Component {
 
         this.state = {
             featuredCoupons: [],
-            regularCoupons: []
+            regularCoupons: [],
+            pageBase: '',
+            resultsPerPage: '',
         };
     }
 
@@ -239,15 +328,28 @@ class CouponContainer extends React.Component {
         })
     };
 
-    updatePriceFilter = (e) => {
+    updatePriceFilter = (e, pageBase = 0, direction = 'increase') => {
         console.log('in update price');
-        fetch(`http://localhost:4000/v1/coupons?price=${e}`)
+        // let payload = {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         pageBase,
+        //         direction,
+        //     })
+        // };
+
+
+        fetch(`http://localhost:4000/v1/coupons?price=${e}&pageBase=${pageBase}&direction=${direction}`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
             console.log('parsed coupons', coupons);
             this.setState({regularCoupons: coupons[0].regular});
-            this.setState({featuredCoupons: coupons[0].featured});
+            // this.setState({featuredCoupons: coupons[0].featured});
+            this.setState({pageBase: coupons[0].pageBase});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
@@ -264,11 +366,11 @@ class CouponContainer extends React.Component {
             this.setState({featuredCoupons: coupons[0].featured});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
-        });
+        })
     };
 
     handleCouponClip = (couponId) => {
-    console.log(getUser(), couponId);
+    console.log(getUser(), couponId + 'weoiuj');
 
     let payload = {
         method: 'POST',
@@ -308,39 +410,44 @@ class CouponContainer extends React.Component {
         })
     };
 
+    forwardPress = (e = 16) => {
 
-
-
-    forwardPress = (e) => {
-        console.log("also what the helio?");
-        fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=increase`)
-            .then(function (response) {
-                return response.json()
-            }).then((coupons) => {
-            console.log('parsed coupons', coupons);
-            this.setState({featuredCoupons: coupons[0].featured});
-            this.setState({regularCoupons: coupons[0].regular});
-            this.setState({pageBase: coupons[0].pageBase});
-            this.setState({resultsPerPage: coupons[0].resultsPerPage});
-        }).catch(function (ex) {
-            console.log('parsing failed', ex)
-        })
+        console.log(e);
+        if (parseInt(e) >= 16 ) {
+            fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=increase`)
+                .then(function (response) {
+                    return response.json()
+                }).then((coupons) => {
+                console.log('parsed coupons', coupons);
+                // this.setState({featuredCoupons: coupons[0].featured});
+                this.setState({regularCoupons: coupons[0].regular});
+                this.setState({pageBase: coupons[0].pageBase});
+                this.setState({resultsPerPage: coupons[0].pageSize});
+            }).catch(function (ex) {
+                console.log('parsing failed', ex)
+            })
+        } else {
+            console.log('YOU FOUND ME!');
+        }
     };
 
-    backwardPress = (e) => {
-        console.log('what the helio!?');
-        fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=decrease`)
-            .then(function (response) {
-                return response.json()
-            }).then((coupons) => {
-            console.log('parsed coupons', coupons);
-            this.setState({featuredCoupons: coupons[0].featured});
-            this.setState({regularCoupons: coupons[0].regular});
-            this.setState({pageBase: coupons[0].pageBase});
-            this.setState({resultsPerPage: coupons[0].resultsPerPage});
-        }).catch(function (ex) {
-            console.log('parsing failed', ex)
-        })
+    backwardPress = (e = 0) => {
+        if (e = 0) {
+            console.log('hello');
+        } else {
+            fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=decrease`)
+                .then(function (response) {
+                    return response.json()
+                }).then((coupons) => {
+                console.log('parsed coupons', coupons);
+                this.setState({featuredCoupons: coupons[0].featured});
+                this.setState({regularCoupons: coupons[0].regular});
+                this.setState({pageBase: coupons[0].pageBase});
+                this.setState({resultsPerPage: coupons[0].pageSize});
+            }).catch(function (ex) {
+                console.log('parsing failed', ex)
+            })
+        }
     };
 
     componentDidMount() {
@@ -351,8 +458,11 @@ class CouponContainer extends React.Component {
             console.log('parsed coupons', coupons);
             this.setState({featuredCoupons: coupons[0].featured});
             this.setState({regularCoupons: coupons[0].regular});
+
+            console.log(coupons[0].pageBase );
+            console.log(coupons[0].pageSize);
             this.setState({pageBase: coupons[0].pageBase});
-            this.setState({resultsPerPage: coupons[0].resultsPerPage});
+            this.setState({resultsPerPage: coupons[0].pageSize});
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         })
@@ -379,6 +489,7 @@ class CouponContainer extends React.Component {
                             <div className="col-md-7 coupon-wrapper--left">
                                 <CouponCard couponView={this.state.regularCoupons}
                                             couponClip={this.handleCouponClip}
+                                           products={products}
                                 />
                             </div>
 
@@ -396,4 +507,21 @@ class CouponContainer extends React.Component {
 }
 
 export default CouponContainer;
-
+/*
+blender={blender}
+books={books}
+chocolate-cake={chocolate-cake}
+clothes={clothes}
+computer={computer}
+cupcakes={cupcakes}
+food={food}
+headphones={headphones}
+lamp={lamp}
+recordplayer={recordplayer}
+scooter={scooter}
+soda={soda}
+speakers={speakers}
+strawberry-cake-8-inche={strawberry-cake-8-inch}
+table={table}
+toyes={toys}
+*/
