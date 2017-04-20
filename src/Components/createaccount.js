@@ -3,26 +3,10 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
-
-//
-//
-// const myAuth = {
-//     isAuthenticated: function () {
-//         const result = sessionStorage.getItem('token');
-//         return !!result;
-//     },
-//
-//     logout: function () {
-//         sessionStorage.removeItem('token');
-//     }
-// };
-
-
+import {Link} from 'react-router-dom';
 
 
 class CreateAccount extends React.Component {
-
 
 
     handleSubmit = (evt) => {
@@ -84,7 +68,8 @@ class CreateAccount extends React.Component {
                             <div className='col-xs-2'>
                                 <label>Password</label>
                                 <input type="password" name="Password" ref='password' placeholder="Password"/>
-                                <input type="password" name="Password" ref='passwordverify' placeholder="Verify Password"/>
+                                <input type="password" name="Password" ref='passwordverify'
+                                       placeholder="Verify Password"/>
                                 <br />
                                 <br />
                                 <button className="ui button" type="submit">Submit</button>
@@ -100,12 +85,6 @@ class CreateAccount extends React.Component {
     }
 
 }
-
-
-
-
-
-
 
 
 export default CreateAccount;

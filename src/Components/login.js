@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
  */
 
 import React from 'react';
-// import Redirect from 'react-router-dom';
 
 
 const myAuth = {
@@ -46,7 +45,7 @@ class Login extends React.Component {
             sessionStorage.setItem('token', reply.token);
             sessionStorage.setItem('username', username);
             console.log(reply);
-            if ( reply.type ) {
+            if (reply.type) {
                 sessionStorage.setItem('usertype', reply.type);
             }
             console.log(reply.type);
@@ -56,6 +55,7 @@ class Login extends React.Component {
         });
 
     };
+
     render() {
         return (
             <div>

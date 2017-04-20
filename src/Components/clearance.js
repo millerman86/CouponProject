@@ -18,17 +18,3 @@ class Clearance extends React.Component {
 
 
 export default Clearance;
-
-/*
-<div className='row'>
-    <div className='col-md-12'>
-        <form action="url('image/do-upload')"
-              className='dropzone'
-              id='addImages'>
-
-
-
-        </form>
-    </div>
-</div>
-    */

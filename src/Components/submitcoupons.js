@@ -1,32 +1,13 @@
 /**
  * Created by amrenmiller on 4/7/17.
  */
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 /**
  * Created by amrenmiller on 4/6/17.
  */
 
 import React from 'react';
-
-// fetch('http://localhost:4000/v1/login', { method: 'GET',
-//     headers: 'application/json'}) {
-
-//     var myHeaders = new Headers();
-//
-//     var myInit = { method: 'GET',
-//     headers: myHeaders,
-//     mode: 'cors',
-//     cache: 'default' };
-//
-//     fetch('flowers.jpg', myInit)
-// .then(function(response) {
-//     return response.blob();
-// })
-// .then(function(myBlob) {
-//     var objectURL = URL.createObjectURL(myBlob);
-//     myImage.src = objectURL;
-// });
 
 
 class SubmitCoupons extends React.Component {
@@ -68,7 +49,7 @@ class SubmitCoupons extends React.Component {
                         <div className='col-xs-2'>
                             <h3>LOGIN</h3>
                             <label >Username or Email</label>
-                            <input type="text" ref='username' name="username" placeholder="Username" />
+                            <input type="text" ref='username' name="username" placeholder="Username"/>
                         </div>
                     </div>
                     <div className="field">
@@ -77,10 +58,10 @@ class SubmitCoupons extends React.Component {
                             </div>
                             <div className='col-xs-2'>
                                 <label>Password</label>
-                                <input type="text" name="Password" ref='password'placeholder="Password" />
+                                <input type="text" name="Password" ref='password' placeholder="Password"/>
                                 <br />
                                 <br />
-                                <button className="ui button"  type="submit">Submit</button>
+                                <button className="ui button" type="submit">Submit</button>
                                 <Link to='/advertise'><p>Not a member? Create an account!</p></Link>
                             </div>
                         </div>

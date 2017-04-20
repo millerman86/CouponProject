@@ -117,7 +117,6 @@ const myAuth = {
     isAuthenticated: function () {
         const result = sessionStorage.getItem('token');
         return true;
-        // !!result && (sessionStorage.getItem('usertype') === 'company');
     }
 };
 
@@ -137,9 +136,6 @@ const AdvertiseSwitch = () => {
 };
 
 class Advertise extends React.Component {
-
-
-
 
 
     createCompanyAccount = (evt) => {
@@ -209,7 +205,8 @@ class Advertise extends React.Component {
                             <div className='col-xs-2'>
                                 <label >Password</label>
                                 <input type="password" ref="password" name='password' placeholder="Password"/>
-                                <input type='password' ref="passwordverify" name='passwordverify' placeholder="Verify Password"/>
+                                <input type='password' ref="passwordverify" name='passwordverify'
+                                       placeholder="Verify Password"/>
 
                                 <br />
                                 <br />
@@ -301,14 +298,6 @@ class AdvertiseProducts extends React.Component {
         }
     };
 
-    // handleDealChange = (evt) => {
-    //     let deal = this.refs.deal.value;
-    //     if (deal.length > 7) {
-    //         alert('No longer than 7 characters!')
-    //     }
-    //     this.setState({deal: deal});
-    // };
-
     onDealSelect = (evt) => {
         this.setState({deal: '%' + evt.target.value + ' ' + 'OFF'});
     };
@@ -317,14 +306,9 @@ class AdvertiseProducts extends React.Component {
         if (evt.target.value === 'Select Deal') {
             return
         } else {
-            this.setState({ deal: evt.target.value });
+            this.setState({deal: evt.target.value});
         }
     };
-
-    // onImageSubmit = (e) => {
-    //     e.preventDefault();
-    //     this.setState({image: e.target.element})
-    // };
 
     handleCouponSubmit = (evt) => {
 
@@ -336,23 +320,14 @@ class AdvertiseProducts extends React.Component {
         let shipping = this.state.shipping;
         let price;
 
-        // let deal = this.state.deal;
-        // let offer = this.refs.offer.value;
-        // let condition = this.refs.condition.value;
-        // let disclaimer = this.refs.disclaimer.value;
-
         if (!(
             product
-            // && deal
-            // && offer
-            // && condition
-            // && disclaimer
             && company)) {
             return
         }
 
         if (this.state.price === '(Price)') {
-            this.setState({ priceError: "You must enter a price to submit a coupon."});
+            this.setState({priceError: "You must enter a price to submit a coupon."});
             return
         } else {
             price = this.state.price;
@@ -375,10 +350,6 @@ class AdvertiseProducts extends React.Component {
             body: JSON.stringify({
                 id,
                 product,
-                // deal,
-                // offer,
-                // condition,
-                // disclaimer,
                 company,
                 shipping,
                 price,
@@ -441,7 +412,8 @@ class AdvertiseProducts extends React.Component {
                         <div className='row'>
 
                             <div className='col-xs-12'>
-                                <div className="clip-button text-left"> <button><i className='cut icon'></i>Clip</button>
+                                <div className="clip-button text-left">
+                                    <button><i className='cut icon'></i>Clip</button>
                                     <span className='float-right coupon-code'>{this.state.id}</span></div>
                             </div>
 
@@ -468,7 +440,7 @@ class AdvertiseProducts extends React.Component {
                         />
                         <br />
                         <select ref='other'
-                            onChange={this.onDealTypeSelect}>
+                                onChange={this.onDealTypeSelect}>
                             <option default>Select Deal</option>
                             <option>2 for 1</option>
                             <option>FREE *</option>
@@ -476,7 +448,7 @@ class AdvertiseProducts extends React.Component {
                         </select>
                         Or % OFF
                         <select ref='%'
-                            onChange={this.onDealSelect}>
+                                onChange={this.onDealSelect}>
                             <option></option>
                             <option>5</option>
                             <option>10</option>
@@ -520,17 +492,6 @@ class AdvertiseProducts extends React.Component {
 
                     </form>
 
-
-                    {/*<form action="" method="post" enctype="multipart/form-data">*/}
-                        {/*<input type="file" name="file" />*/}
-                    {/*</form>*/}
-
-
-
-
-
-
-
                 </div>
             </div>
         );
@@ -540,74 +501,3 @@ class AdvertiseProducts extends React.Component {
 
 export default AdvertiseSwitch;
 
-
-
-/*
- <form action="http://localhost:4000/v1/imagesubmit"
- className="dropzone"
- id="my-awesome-dropzone"></form>
-
- */
-
-
-
-
-
-/*
- <div className='row'>
- <div className='col-md-12 drop-zone'>
- <form action="url('image/do-upload')"
- className='dropzone'
- id='addImages'>
- <h2>Drop your images here!</h2>
-
-
- </form>
- </div>
- </div>
- */
-
-/*
-<input type='text' placeholder='Offer'
-       ref='offer'
-/>
-
-<input type='text' placeholder='Disclaimer'
-       ref='disclaimer'
-/>
-<br />
-<input type='text' placeholder='Condition'
-ref='condition'
-    />
-    */
-
-
-// let price = this.refs.price.value;
-// if (price.includes('.00') !== true) {
-//     price = price.split('');
-//     price.push('.00');
-//     price = price.join('');
-//     console.log(price);
-// }
-
-// isNumeric = (n) => {
-//     return !isNaN(parseFloat(n)) && isFinite(n);
-// };
-//
-// validatedPrice = (price) => {
-//
-//     if (this.validatedPrice(price))
-//         if (!String(price).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
-//             alert("Enter price only. For example: 523.36 or $523.36");
-//
-//         } else {
-//             return true
-//         }
-// };
-
-
-// import UUID from 'simply-uuid';
-//
-// const createId = () => {
-//     return UUID.generate();
-// };
