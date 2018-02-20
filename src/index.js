@@ -5,16 +5,25 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import uuid from 'uuid';
 import Routes from './router.js';
 
 
 injectTapEventPlugin();
 
 
+function dummyreducer(state = [], action = {type: 'ADD_TODO'}) {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return state.concat([action.text])
+    default:
+      return state
+  }
+}
+
+
 const initialState = {coupons: []};
 
-const store = createStore(reducer, initialState);
+const store = createStore(dummyreducer, initialState);
 
 ReactDOM.render(
     <MuiThemeProvider>

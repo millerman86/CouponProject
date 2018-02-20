@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 
 // import ReactDOM from 'react-dom';
-import CouponContainer from '../App.js';
+import CouponContainer from '../../App.js';
 import { Link } from 'react-router-dom';
 import {
 
@@ -13,7 +13,7 @@ import {
     Redirect,
 } from 'react-router-dom';
 
-import '../App.css';
+import '../../App.css';
 
 
 

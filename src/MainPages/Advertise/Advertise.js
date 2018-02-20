@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../App.js'
+import '../../App.js'
 import dropzone from 'dropzone';
 
 let randomFixedInteger = function (length) {

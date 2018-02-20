@@ -1,12 +1,12 @@
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import HomePage from './Components/HomePage2.js';
+import HomePage from './MainPages/HomePage2/HomePage2.js';
 import React from 'react';
-import Login from './Components/login.js';
-import AdvertiseSwitch from './Components/advertise.js';
-import SubmitCoupons from './Components/submitcoupons.js';
+import Login from './MainPages/Login/Login.js';
+import AdvertiseSwitch from './MainPages/Advertise/Advertise.js';
+import SubmitCoupons from './MainPages/SubmitCoupons/SubmitCoupons.js';
 import {Redirect} from 'react-router-dom';
-import CreateAccount from './Components/createaccount.js';
-import Clearance from './Components/clearance';
+import CreateAccount from './MainPages/CreateAccount/CreateAccount.js';
+import Clearance from './MainPages/Clearance/Clearance';
 
 const myAuth = {
     isAuthenticated: function () {

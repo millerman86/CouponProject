@@ -1,16 +1,16 @@
-import React from 'react';
-import './App.css';
-import MySlider from './Components/slider';
+import  React from 'react';
+import  './App.css';
+import  MySlider from './MainPages/Slider/Slider';
 import  blender from '../public/images/blender.jpg';
 import  books from '../public/images/books.jpg';
 import  chocolatecake from '../public/images/chocolate-cake.jpg';
 import  clothes from '../public/images/clothes.jpg';
 import  computer from '../public/images/computer.jpg';
-import cupcakes  from '../public/images/cupcakes.jpg';
+import  cupcakes  from '../public/images/cupcakes.jpg';
 import  food from '../public/images/food.jpg';
 import  headphones from '../public/images/headphones.jpg';
 import  lamp from '../public/images/lamp.jpg';
-import recordplayer from '../public/images/recordplayer.jpg';
+import  recordplayer from '../public/images/recordplayer.jpg';
 import  scooter from '../public/images/scooter.jpg';
 import  soda from '../public/images/soda.jpg';
 import  speakers from '../public/images/speakers.jpg';
@@ -18,6 +18,7 @@ import  strawberrycake8inch from '../public/images/strawberry-cake-8-inch.jpg';
 import  table from '../public/images/table.jpg';
 import  toys from '../public/images/toys.jpg';
 
+import DataBaseEndPoint from './DataBaseEndPoint';
 
 const getUser = () => {
     return sessionStorage.getItem('username');
@@ -57,12 +58,12 @@ const CouponCard = (props) => (
                     </div>
                     <div className="coupon-card--buttons row">
                         <div className="col-xs-6 border-right">
-                            <div className="card-button text-center voting-button"><i
-                                className="icon-button icon-thumbs-up"></i></div>
+                            <div className="card-button text-center voting-button">
+                                <i className="icon-button icon-thumbs-up" /></div>
                         </div>
                         <div className="col-xs-6">
-                            <div className="card-button text-center comment-button"><i
-                                className="icon-button icon-comment"></i></div>
+                            <div className="card-button text-center comment-button">
+                                <i className="icon-button icon-comment" /></div>
                         </div>
 
                     </div>
@@ -106,7 +107,7 @@ const Coupons = (props) => (
                         {coupon.disclaimer}
                     </div>
                     <div className="Barcode">
-                        <i className='barcode icon'></i>
+                        <i className='barcode icon' />
                     </div>
                 </div>
             ))
@@ -306,7 +307,7 @@ class CouponContainer extends React.Component {
 
     updateCompanyFilter = (e) => {
         console.log('in update company');
-        fetch(`http://localhost:4000/v1/coupons?company=${e}`)
+        fetch(`${DataBaseEndPoint}/v1/coupons?company=${e}`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
@@ -320,7 +321,7 @@ class CouponContainer extends React.Component {
     updatePriceFilter = (e, pageBase = 0, direction = 'increase') => {
         console.log('in update price');
 
-        fetch(`http://localhost:4000/v1/coupons?price=${e}&pageBase=${pageBase}&direction=${direction}`)
+        fetch(`${DataBaseEndPoint}/v1/coupons?price=${e}&pageBase=${pageBase}&direction=${direction}`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
@@ -334,7 +335,7 @@ class CouponContainer extends React.Component {
 
     updateDealFilter = (e) => {
         console.log('in update price');
-        fetch(`http://localhost:4000/v1/coupons?deal=${e}`)
+        fetch(`${DataBaseEndPoint}/v1/coupons?deal=${e}`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
@@ -359,7 +360,7 @@ class CouponContainer extends React.Component {
             })
         };
 
-        fetch(`http://localhost:4000/v1/clipped/${getUser()}`, payload)
+        fetch(`${DataBaseEndPoint}/v1/clipped/${getUser()}`, payload)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
@@ -375,7 +376,7 @@ class CouponContainer extends React.Component {
 
     updateProductFilter = (e) => {
         console.log('in update product');
-        fetch(`http://localhost:4000/v1/coupons?product=${e}`)
+        fetch(`${DataBaseEndPoint}/v1/coupons?product=${e}`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
@@ -391,7 +392,7 @@ class CouponContainer extends React.Component {
 
         console.log(e);
         if (parseInt(e) >= 16) {
-            fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=increase`)
+            fetch(`${DataBaseEndPoint}/v1/coupons?page=${e}&direction=increase`)
                 .then(function (response) {
                     return response.json()
                 }).then((coupons) => {
@@ -411,7 +412,7 @@ class CouponContainer extends React.Component {
         if (e = 0) {
             console.log('hello');
         } else {
-            fetch(`http://localhost:4000/v1/coupons?page=${e}&direction=decrease`)
+            fetch(`${DataBaseEndPoint}/v1/coupons?page=${e}&direction=decrease`)
                 .then(function (response) {
                     return response.json()
                 }).then((coupons) => {
@@ -427,7 +428,7 @@ class CouponContainer extends React.Component {
     };
 
     componentDidMount() {
-        fetch("http://localhost:4000/v1/coupons")
+        fetch(`${DataBaseEndPoint}/v1/coupons`)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {
