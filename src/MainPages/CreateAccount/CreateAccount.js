@@ -4,7 +4,7 @@
 
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import DataBaseEndPoint from '../../DataBaseEndPoint';
 
 class CreateAccount extends React.Component {
 
@@ -24,7 +24,7 @@ class CreateAccount extends React.Component {
                 })
             };
 
-            fetch(`http://localhost:4000/v1/createuser`, myInit)
+            fetch(`${DataBaseEndPoint}/v1/createuser`, myInit)
                 .then(function (response) {
                     return response.json()
                 }).then((token) => {

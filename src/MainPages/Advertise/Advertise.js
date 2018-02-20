@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 import '../../App.js'
 import dropzone from 'dropzone';
 
+import DataBaseEndPoint from '../../DataBaseEndPoint';
+
 let randomFixedInteger = function (length) {
     return Math.floor(Math.pow(10, length - 1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length - 1) - 1));
 };
@@ -158,7 +160,7 @@ class Advertise extends React.Component {
             };
 
 
-            fetch(`http://localhost:4000/v1/createuser`, myInit)
+            fetch(`${DataBaseEndPoint}/v1/createuser`, myInit)
                 .then(function (response) {
                     return response.json()
                 }).then((response) => {
@@ -356,7 +358,7 @@ class AdvertiseProducts extends React.Component {
             })
         };
 
-        fetch(`http://localhost:4000/v1/coupons`, myInit)
+        fetch(`${DataBaseEndPoint}/v1/coupons`, myInit)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {

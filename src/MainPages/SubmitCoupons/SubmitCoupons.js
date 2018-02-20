@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
  */
 
 import React from 'react';
-
+import DataBaseEndPoint from '../../DataBaseEndPoint';
 
 class SubmitCoupons extends React.Component {
 
@@ -24,7 +24,7 @@ class SubmitCoupons extends React.Component {
             })
         };
         evt.preventDefault();
-        fetch(`http://localhost:4000/v1/login`, myInit)
+        fetch(`${DataBaseEndPoint}/v1/login`, myInit)
             .then(function (response) {
                 return response.json()
             }).then((coupons) => {

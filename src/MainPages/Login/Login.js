@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
  */
 
 import React from 'react';
-
+import DataBaseEndPoint from '../../DataBaseEndPoint';
 
 const myAuth = {
     isAuthenticated: function () {
@@ -37,7 +37,7 @@ class Login extends React.Component {
         sessionStorage.setItem('username', username);
         console.log(sessionStorage.getItem('username'));
 
-        fetch(`http://localhost:4000/v1/login`, myInit)
+        fetch(`${DataBaseEndPoint}/v1/login`, myInit)
             .then(function (response) {
                 return response.json()
             }).then((reply) => {
