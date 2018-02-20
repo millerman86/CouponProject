@@ -15,24 +15,14 @@ import {
 
 import '../../App.css';
 
+import MyAuth from '../../Authorization';
 
-
-const myAuth = {
-    isAuthenticated: function () {
-        const result = sessionStorage.getItem('token');
-        return !!result;
-    },
-
-    logout: function () {
-        sessionStorage.removeItem('token');
-    }
-};
 
 
 
 const PrivateRoute = ({ component, ...rest }) => (
     <Route {...rest} render={props => (
-        myAuth.isAuthenticated() ? (
+        MyAuth.isAuthenticated() ? (
                 React.createElement(component, props)
             ) : (
                 <Redirect to={{
@@ -44,11 +34,11 @@ const PrivateRoute = ({ component, ...rest }) => (
 );
 
 
-const logoutButton = () => (
+const LogoutButton = () => (
     <div>
         <p>
             Welcome! <button onClick={() => {
-            myAuth.logout(() => history.push('/'));
+            MyAuth.logout(() => history.push('/'));
         }}>Sign out</button>
         </p>
     </div>
@@ -61,19 +51,12 @@ class HomePage extends Component {
         return (
             <div>
 
+
+                {/*THIS COMPONENT INDEPENDENTLY IMPORTS ITS OWN PRESENTATIONAL COMPONENTS AND MAKES INDEPENDENT DATABASE REQUESTS USING COMPONENTDIDMOUNT AND FETCHING*/}
                 <CouponContainer />
 
-                <div className='footer'>
-                    <a href='#'>Amren Miller</a>
-                    <br />
-                    <a href='#'>(801)634-5110</a>
-                    <br />
-                    <a href='#'>amrenmiller@gmail.com</a>
-                    <br />
-                    <br />
-                    <br />
 
-                </div>
+
             </div>
         );
     }
