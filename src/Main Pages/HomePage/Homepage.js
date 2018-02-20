@@ -4,8 +4,8 @@
 
 import React, {Component} from 'react';
 
-// import ReactDOM from 'react-dom';
-import CouponContainer from '../../App.js';
+
+import CouponContainer from './CouponContainer/CouponContainer.js';
 import { Link } from 'react-router-dom';
 import {
 
@@ -71,15 +71,18 @@ class HomePage extends Component {
     render() {
         return (
             <div>
+
                 <Banner logoutVisible={myAuth.isAuthenticated()}/>
+
                 <div className="ui seven buttons">
-                    <button className='ui button'><Link to='/homepage'><span className='black-letters'><i className='home icon'></i>Home</span></Link></button>
-                    <button className="ui button"><Link to='/redirects'><span className='black-letters'><i className='location arrow icon'></i>Local</span></Link></button>
-                    <button className='ui button'><Link to='/clearance'><span className='black-letters'><i className="dollar icon"></i>Clearance</span></Link></button>
-                    <button className='ui button'><Link to='/search'><span className='black-letters'><i className='find icon'></i>Search Coupons</span></Link></button>
-                    <button className='ui button'><Link to='/login'><span className='black-letters'><i className='empty star icon'></i>Login</span></Link></button>
-                    <button className='ui button'><Link to='/advertise'><span className='black-letters'><i className='announcement icon'></i>ADVERTISE</span></Link></button>
+                    <button className='ui button'><Link to='/homepage'><span className='black-letters'><i className='home icon' />Home</span></Link></button>
+                    <button className="ui button"><Link to='/redirects'><span className='black-letters'><i className='location arrow icon' />Local</span></Link></button>
+                    <button className='ui button'><Link to='/clearance'><span className='black-letters'><i className="dollar icon" />Clearance</span></Link></button>
+                    <button className='ui button'><Link to='/search'><span className='black-letters'><i className='find icon' />Search Coupons</span></Link></button>
+                    <button className='ui button'><Link to='/login'><span className='black-letters'><i className='empty star icon' />Login</span></Link></button>
+                    <button className='ui button'><Link to='/advertise'><span className='black-letters'><i className='announcement icon' />ADVERTISE</span></Link></button>
                 </div>
+
                 <CouponContainer />
 
                 <div className='footer'>

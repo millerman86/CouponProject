@@ -3,8 +3,7 @@
  */
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../../App.js'
-import dropzone from 'dropzone';
+import '../HomePage/CouponContainer/CouponContainer.js'
 
 import DataBaseEndPoint from '../../DataBaseEndPoint';
 
@@ -403,19 +402,19 @@ class AdvertiseProducts extends React.Component {
                         </div>
                         <div className="coupon-card--buttons row">
                             <div className="col-xs-6 border-right">
-                                <div className="card-button text-center voting-button"><i
-                                    className="icon-button icon-thumbs-up"></i></div>
+                                <div className="card-button text-center voting-button">
+                                    <i className="icon-button icon-thumbs-up" /></div>
                             </div>
                             <div className="col-xs-6">
-                                <div className="card-button text-center comment-button"><i
-                                    className="icon-button icon-comment"></i></div>
+                                <div className="card-button text-center comment-button">
+                                    <i className="icon-button icon-comment" /></div>
                             </div>
                         </div>
                         <div className='row'>
 
                             <div className='col-xs-12'>
                                 <div className="clip-button text-left">
-                                    <button><i className='cut icon'></i>Clip</button>
+                                    <button><i className='cut icon' />Clip</button>
                                     <span className='float-right coupon-code'>{this.state.id}</span></div>
                             </div>
 
@@ -451,7 +450,7 @@ class AdvertiseProducts extends React.Component {
                         Or % OFF
                         <select ref='%'
                                 onChange={this.onDealSelect}>
-                            <option></option>
+                            <option value=''>&nbsp;</option>
                             <option>5</option>
                             <option>10</option>
                             <option>15</option>
