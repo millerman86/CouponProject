@@ -7,10 +7,12 @@ import {
 import HomePage from '../Main Pages/HomePage/Homepage.js';
 import React from 'react';
 import Login from '../Main Pages/Login/Login.js';
-import AdvertiseSwitch from '../Main Pages/Advertise/Advertise.js';
 import SubmitCoupons from '../Main Pages/SubmitCoupons/SubmitCoupons.js';
 import CreateAccount from '../Main Pages/CreateAccount/CreateAccount.js';
 import Clearance from '../Main Pages/Clearance/Clearance';
+
+import AdvertiseSwitch from '../Main Pages/Advertise/Advertise.js';
+
 
 import PrivateRoute from './PrivateRouteComponent';
 

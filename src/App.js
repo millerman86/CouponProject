@@ -1,8 +1,36 @@
-// import React from 'react';
-//
-// import Router from './Router/Router';
-//
-//
+import React from 'react';
+
+import Routes from './Router/Router';
+
+
+import Banner from './Shared/Banner';
+import Navigation from './Shared/Navigation';
+
+
+
+const myAuth = {
+  isAuthenticated: function () {
+    const result = sessionStorage.getItem('token');
+    return !!result;
+  },
+
+  logout: function () {
+    sessionStorage.removeItem('token');
+  }
+};
+
+
+
+
+
+export default () => (
+  <div>
+    <Banner logoutVisible={myAuth.isAuthenticated()}/>
+    <Navigation />
+    <Routes />
+  </div>
+);
+
 //
 //
 // const myAuth = {

@@ -56,32 +56,10 @@ const logoutButton = () => (
 
 
 
-const Banner = ({ component, ...rest }) => (
-    <div className='Banner'>
-        <p className='banner-text'>Coupon Market</p>
-        <div className="logout-button">
-        <PrivateRoute path='/' component={logoutButton} />
-        </div>
-
-    </div>
-);
-
-
 class HomePage extends Component {
     render() {
         return (
             <div>
-
-                <Banner logoutVisible={myAuth.isAuthenticated()}/>
-
-                <div className="ui seven buttons">
-                    <button className='ui button'><Link to='/homepage'><span className='black-letters'><i className='home icon' />Home</span></Link></button>
-                    <button className="ui button"><Link to='/redirects'><span className='black-letters'><i className='location arrow icon' />Local</span></Link></button>
-                    <button className='ui button'><Link to='/clearance'><span className='black-letters'><i className="dollar icon" />Clearance</span></Link></button>
-                    <button className='ui button'><Link to='/search'><span className='black-letters'><i className='find icon' />Search Coupons</span></Link></button>
-                    <button className='ui button'><Link to='/login'><span className='black-letters'><i className='empty star icon' />Login</span></Link></button>
-                    <button className='ui button'><Link to='/advertise'><span className='black-letters'><i className='announcement icon' />ADVERTISE</span></Link></button>
-                </div>
 
                 <CouponContainer />
 

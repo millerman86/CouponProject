@@ -5,7 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
-import Routes from './Router/Router.js';
+import App from './App.js';
 
 
 injectTapEventPlugin();
@@ -28,7 +28,7 @@ const store = createStore(dummyreducer, initialState);
 ReactDOM.render(
     <MuiThemeProvider>
         <Provider store={store}>
-            <Routes />
+            <App />
         </Provider>
     </MuiThemeProvider>,
     document.getElementById('root')
