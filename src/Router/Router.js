@@ -14,10 +14,6 @@ import Clearance from '../Main Pages/Clearance/Clearance';
 
 import AdvertiseSwitch from '../Main Pages/Advertise/Advertise.js';
 
-//
-// import PrivateRoute from './PrivateRouteComponent';
-
-
 
 const myAuth = {
   isAuthenticated: function () {
@@ -27,31 +23,12 @@ const myAuth = {
 };
 
 
-//
-//
-// const PrivateRoute = ({component, ...rest}) => (
-//   <Route {...rest} render={props => (
-//     myAuth.isAuthenticated ? (
-//         React.createElement(component, props)
-//       ) : (
-//         <Redirect to={{
-//           pathname: '/login',
-//           state: {from: props.location}
-//         }}/>
-//       )
-//   )}/>
-// );
-//
-
-
 // THIS FOR SURE WORKS
 const PrivateRoute = ({component: Component, authorized, ...rest}) => {
   return (
     <Route
       {...rest}
-      render={(props) => authorized === true
-        ? <Component {...props} />
-        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+      render={(props) => authorized === true ? (<Component {...props} />) : (<Redirect to={{pathname: '/homepage', state: {from: props.location}}} />)}
     />
   )
 };
