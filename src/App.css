@@ -346,3 +346,16 @@
   text-align: center;
   font-size: 27px;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.login-margin {
+  margin-top: 60px;
+  margin-bottom: 150px;
+}
+
+.align-center {
+  text-align: center;
+}

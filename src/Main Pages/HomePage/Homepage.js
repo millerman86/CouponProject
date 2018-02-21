@@ -5,7 +5,7 @@
 import React from 'react';
 
 
-import CouponDataContainer from './CouponDataContainer/CouponDataContainer.js';
+import CouponHomePageDataContainer from './CouponHomePageDataContainer/CouponHomePageDataContainer.js';
 
 import '../../App.css';
 
@@ -34,7 +34,7 @@ import table from './../../../public/images/table.jpg';
 import toys from './../../../public/images/toys.jpg';
 
 
-
+// UNTIL FURTHER NOTICE, THE PICTURES USED BELOW ARE RANDOM AND FOR PURELY COSMETIC REASONS
 let products = [
   blender,
   books,
@@ -101,7 +101,7 @@ let products = [
 
 
 
-class HomePage extends CouponDataContainer { // THIS EXTENDS THE COUPONDATACONTAINERCLASS, MEANING ALL METHODS
+class HomePage extends CouponHomePageDataContainer { // THIS EXTENDS THE COUPONHOMEPAGEDATACONTAINERCLASS, MEANING ALL METHODS, WHICH ARE USED TO FETCH DATA
 
   render() {
     return (
@@ -111,6 +111,8 @@ class HomePage extends CouponDataContainer { // THIS EXTENDS THE COUPONDATACONTA
 
 
             {/*ALL OF THE COMPONENTS BELOW ARE SIMPLY THE PRESENTATIONAL LAYER OF THE DATA THAT COMES IN FROM THE DATABASE*/}
+
+            {/*ALTHOUGH IT MAY SEEM A LITTLE BIT EXCESSIVE, THE COUPONHOMEPAGEDATACONTAINER IS WHAT CONTROLS THE DATA FETCHING, SO THEY ARE PASSED FROM PARENT TO CHILD*/}
             <CouponFilter priceFilter={this.updatePriceFilter}
                           companyFilter={this.updateCompanyFilter}
                           productFilter={this.updateProductFilter}

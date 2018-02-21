@@ -1,10 +1,5 @@
 import React from 'react';
 
-import {
-  Route,
-  Redirect,
-} from 'react-router-dom';
-
 
 import Routes from './Router/Router';
 
@@ -16,13 +11,16 @@ import Footer from './Shared/Footer';
 
 import MyAuth from './Authorization';
 
+const array = ['advertise'];
+
+
 
 
 export default () => (
   <div>
 
     <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-    <Navigation />
+    <Navigation excludedRoutes={array}/>
     <Routes />
     <Footer />
 

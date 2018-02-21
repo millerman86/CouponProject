@@ -6,16 +6,6 @@ import {Link} from 'react-router-dom';
 import React from 'react';
 import DataBaseEndPoint from '../../DataBaseEndPoint';
 
-const myAuth = {
-    isAuthenticated: function () {
-        const result = sessionStorage.getItem('token');
-        return !!result;
-    },
-
-    logout: function () {
-        sessionStorage.removeItem('token');
-    }
-};
 
 class Login extends React.Component {
 
@@ -24,7 +14,7 @@ class Login extends React.Component {
         evt.preventDefault();
         let username = this.refs.username.value;
         let myInit = {
-            method: 'post',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -34,9 +24,6 @@ class Login extends React.Component {
             })
         };
 
-        sessionStorage.setItem('username', username);
-        console.log(sessionStorage.getItem('username'));
-
         fetch(`${DataBaseEndPoint}/v1/login`, myInit)
             .then(function (response) {
                 return response.json()
@@ -44,11 +31,11 @@ class Login extends React.Component {
             console.log('Here is your token', reply.token);
             sessionStorage.setItem('token', reply.token);
             sessionStorage.setItem('username', username);
-            console.log(reply);
+            console.log('this is your reply', reply); // {token: <token>}
             if (reply.type) {
                 sessionStorage.setItem('usertype', reply.type);
             }
-            console.log(reply.type);
+            console.log('reply type', reply.type);
             this.props.history.push('/HomePage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)
@@ -58,7 +45,7 @@ class Login extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className='login-margin'>
                 <form className='ui form' onSubmit={this.handleLogin}>
                     <div className='col-xs-12'>
                         <div className='col-xs-2'>
@@ -68,7 +55,7 @@ class Login extends React.Component {
                         <div className='col-xs-1'>
                         </div>
                         <div className='col-xs-2'>
-                            <h3>LOGIN</h3>
+                            <h3 className='align-center'>LOGIN</h3>
                             <label >Username or Email</label>
                             <input type="text" ref='username' name="username" placeholder="Username"/>
                         </div>
@@ -82,12 +69,11 @@ class Login extends React.Component {
                                 <input type="text" name="Password" ref='password' placeholder="Password"/>
                                 <br />
                                 <br />
-                                <button className="ui button" type="submit">Submit</button>
+                                <button className={`ui button`} type="submit">Submit</button>
                                 <Link to='/createaccount'><p>Not a member? Create a user account!</p></Link>
                             </div>
                         </div>
                     </div>
-
                 </form>
             </div>
 

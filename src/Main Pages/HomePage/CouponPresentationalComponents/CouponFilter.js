@@ -114,13 +114,13 @@ export default class CouponFilter extends React.Component {
             Forward
           </div>
 
-          <div onClick={(e) => this.handleBackwardClick(this.props.pageBase)}>
+          <div className='cursor-pointer' onClick={(e) => this.handleBackwardClick(this.props.pageBase)}>
 
             <i className='arrow circle outline left icon forward-back' />
 
           </div>
 
-          <div onClick={(e) => this.handleForwardClick(this.props.resultsPerPage)}>
+          <div className='cursor-pointer' onClick={(e) => this.handleForwardClick(this.props.resultsPerPage)}>
 
             <i className='arrow circle outline right icon forward-back' />
 

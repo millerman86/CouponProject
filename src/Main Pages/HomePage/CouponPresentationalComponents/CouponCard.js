@@ -10,7 +10,7 @@ const CouponCard = (props) => (
           className="CouponCard float-left"
         >
           <div className="coupon-card--image-wrap">
-            <img src={props.products[index]}/>
+            <img alt='' src={props.products[index]}/>
             <div className="coupon-card--company col-xs-3">
               {coupon.company}
             </div>
