@@ -1,7 +1,8 @@
 import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
+  Redirect
 } from 'react-router-dom';
 
 import HomePage from '../Main Pages/HomePage/Homepage.js';
@@ -13,8 +14,50 @@ import Clearance from '../Main Pages/Clearance/Clearance';
 
 import AdvertiseSwitch from '../Main Pages/Advertise/Advertise.js';
 
+//
+// import PrivateRoute from './PrivateRouteComponent';
 
-import PrivateRoute from './PrivateRouteComponent';
+
+
+const myAuth = {
+  isAuthenticated: function () {
+    const result = sessionStorage.getItem('token');
+    return !!result;
+  }
+};
+
+
+//
+//
+// const PrivateRoute = ({component, ...rest}) => (
+//   <Route {...rest} render={props => (
+//     myAuth.isAuthenticated ? (
+//         React.createElement(component, props)
+//       ) : (
+//         <Redirect to={{
+//           pathname: '/login',
+//           state: {from: props.location}
+//         }}/>
+//       )
+//   )}/>
+// );
+//
+
+
+// THIS FOR SURE WORKS
+const PrivateRoute = ({component: Component, authorized, ...rest}) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authorized === true
+        ? <Component {...props} />
+        : <Redirect to={{pathname: '/login', state: {from: props.location}}} />}
+    />
+  )
+};
+
+
+
 
 export default () => (
     <Router history={null}>
@@ -27,7 +70,9 @@ export default () => (
                 <Route exact path='/createaccount' component={CreateAccount}/>
                 <Route exact path='/clearance' component={Clearance}/>
 
-                <PrivateRoute path='/advertise' component={AdvertiseSwitch}/>
+
+                {/*IF THE USER IS LOGGED IN, ALLOW THEM TO ADVERTISE*/}
+                <PrivateRoute exact path='/advertise' authorized={myAuth.isAuthenticated()} component={AdvertiseSwitch}/>
 
             </Switch>
 

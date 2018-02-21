@@ -11,7 +11,15 @@ import Footer from './Shared/Footer';
 
 import MyAuth from './Authorization';
 
-const array = ['advertise'];
+
+
+
+
+
+let excludedRoutes = [];
+
+
+
 
 
 
@@ -20,7 +28,8 @@ export default () => (
   <div>
 
     <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-    <Navigation excludedRoutes={array}/>
+    {/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/}
+    <Navigation excludedRoutes={excludedRoutes}/>
     <Routes />
     <Footer />
 
