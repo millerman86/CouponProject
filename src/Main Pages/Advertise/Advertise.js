@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Link} from 'react-router-dom';
-import '../HomePage/CouponContainer/CouponContainer.js'
+import '../HomePage/CouponDataContainer/CouponDataContainer.js'
 
 import DataBaseEndPoint from '../../DataBaseEndPoint';
 

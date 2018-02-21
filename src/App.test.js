@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './Main Pages/HomePage/CouponContainer/CouponContainer';
+import App from './Main Pages/HomePage/CouponDataContainer/CouponDataContainer';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
