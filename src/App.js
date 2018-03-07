@@ -20,10 +20,6 @@ class App extends React.Component {
 
   // THIS IS WHERE TO PUT THE LISTENER FOR WHEN THE STORE UPDATES WITH EXCLUDED ROUTES, SO THE NAVIGATION BAR CAN UPDATE WITH WHICH LINKS ARE CLICKABLE. PERHAPS NOT STRICTLY NECESSARY, BUT GOOD FOR PRACTICE
 
-  componentDidMount() {
-
-  }
-
   render() {
 
     return (
@@ -41,9 +37,6 @@ class App extends React.Component {
 
 
 
-
-
-
 const mapStateToProps = (state) => ({
   excludedRoutes: state.excludedRoutes,
 
@@ -56,52 +49,6 @@ const AppWithDynamicRouting = connect(
 )(App);
 
 export default AppWithDynamicRouting;
-
-
-
-
-// export default () => (
-//   <div>
-//
-//     <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-//     <Navigation excludedRoutes={excludedRoutes}/>
-//     <Routes />
-//     <Footer />
-//
-//   </div>
-// );
-
-
-
-//
-//
-// const App = ({excludedRoutes}) => (
-//   <div>
-//
-//     <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-//     <Navigation excludedRoutes={excludedRoutes}/>
-//     <Routes />
-//     <Footer />
-//
-//   </div>
-// );
-
-
-// TODO
-{/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/}
-{/*FOR NOW AT LEAST, YOU CAN SEE ALL THE ROUTES IN THE NAVIGATION BAR, BUT /ADVERTISE IS HIDDEN BEHIND PRIVATE ROUTE LOGIC*/}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -145,20 +92,6 @@ export default AppWithDynamicRouting;
 
 {/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/}
 {/*FOR NOW AT LEAST, YOU CAN SEE ALL THE ROUTES IN THE NAVIGATION BAR, BUT /ADVERTISE IS HIDDEN BEHIND PRIVATE ROUTE LOGIC*/}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

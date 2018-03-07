@@ -34,17 +34,6 @@ function rootReducer(state = [], action) {
 }
 
 
-//
-// function myApp() {
-//   if (typeof state === 'undefined') {
-//     return initialState
-//   }
-//
-//   return state
-// }
-
-
-
 // This accepts the reducer and initialState as two arguments
 let store = createStore(rootReducer, initialState);
 

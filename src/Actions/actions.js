@@ -13,12 +13,3 @@ export function removeExcludedRoute(route) {
 }
 
 
-
-
-// Bound action creators
-// const boundAddTodo = text => dispatch(addTodo(text))
-// const boundCompleteTodo = index => dispatch(completeTodo(index))
-
-
-
-

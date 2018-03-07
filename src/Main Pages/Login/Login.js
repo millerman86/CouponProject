@@ -48,11 +48,6 @@ class Login extends React.Component {
             this.props.dispatch(this.props.onLogin('login'));
 
 
-            // store.dispatch(addExcludedRoute('login'));
-            // OR,
-            // const boundAddTodo = text => dispatch(addTodo(text))
-            // const boundCompleteTodo = index => dispatch(completeTodo(index))
-
             this.props.history.push('/HomePage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)
