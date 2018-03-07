@@ -17,14 +17,20 @@ let initialState = {excludedRoutes: []};
 
 
 //// Note here how you don't have to specify initial state as the first argument, since I'm doing it in the createStore function
-function reducer(state = initialState, action) {
-  if (action.type === ADD_EXCLUDED_ROUTE) {
-    return {
-      excludedRoutes: state.excludedRoutes.concat(action.route),
-    };
-  } else {
-    return state;
-  }
+function rootReducer(state = [], action) {
+  console.log('you found me', action.type);
+  switch (action.type) {
+    case ADD_EXCLUDED_ROUTE:
+      console.log(action.type, 'blah');
+      return {
+        excludedRoutes: [
+          ...state.excludedRoutes,
+          action.route
+        ]
+      };
+    default:
+      return state;
+    }
 }
 
 
@@ -40,7 +46,7 @@ function reducer(state = initialState, action) {
 
 
 // This accepts the reducer and initialState as two arguments
-let store = createStore(reducer);
+let store = createStore(rootReducer, initialState);
 
 
 

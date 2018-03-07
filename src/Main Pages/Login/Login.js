@@ -12,7 +12,9 @@ import { connect } from 'react-redux';
 
 class Login extends React.Component {
 
-
+    componentDidMount() {
+        console.log(this.props)
+    }
 
 
     handleLogin = (evt) => {
@@ -43,7 +45,7 @@ class Login extends React.Component {
             console.log('reply type', reply.type);
 
             // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
-            this.props.onLogin('login');
+            this.props.dispatch(this.props.onLogin('login'));
 
 
             // store.dispatch(addExcludedRoute('login'));

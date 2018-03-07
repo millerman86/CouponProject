@@ -21,11 +21,11 @@ class App extends React.Component {
   // THIS IS WHERE TO PUT THE LISTENER FOR WHEN THE STORE UPDATES WITH EXCLUDED ROUTES, SO THE NAVIGATION BAR CAN UPDATE WITH WHICH LINKS ARE CLICKABLE. PERHAPS NOT STRICTLY NECESSARY, BUT GOOD FOR PRACTICE
 
   componentDidMount() {
-    // store.subscribe(() => this.forceUpdate());
-    // console.log('THIS IS YOUR STATE', store.getState());
+
   }
 
   render() {
+
     return (
       <div>
 
@@ -45,8 +45,10 @@ class App extends React.Component {
 
 
 const mapStateToProps = (state) => ({
-  excludedRoutes: state.excludedRoutes
+  excludedRoutes: state.excludedRoutes,
+
 });
+
 
 
 const AppWithDynamicRouting = connect(

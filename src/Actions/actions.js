@@ -4,7 +4,7 @@ export const REMOVE_EXCLUDED_ROUTE = 'REMOVE_EXCLUDED_ROUTE';
 
 
 export function addExcludedRoute(route) {
-  console.log('EXCLUDING A ROUTE!!!!!!!!!!!!');
+  console.log('EXCLUDING A ROUTE!!!!!!!!!!!!', route);
   return { type: ADD_EXCLUDED_ROUTE, route }
 }
 

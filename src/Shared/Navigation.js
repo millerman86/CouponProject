@@ -5,7 +5,7 @@ import React from 'react';
 
 // SINCE THIS COMPONENT PROBABLY SHOULDN'T NEED TO HOLD STATE, I'LL JUST LEAVE IT AS STC FOR NOW, AND LISTEN FOR STATE FROM THE REDUX STORE USING THE OBSERVER PATTERN
 const Navigation = ({excludedRoutes}) => {
-  console.log(excludedRoutes);
+  console.log('HERE ARE YOUR EXCLUDED ROUTES!!!!', excludedRoutes);
    return (
     <div className="ui seven buttons">
       {excludedRoutes.includes('homepage') ? null : (<button className='ui button'><a href='/homepage'><span className='black-letters'><i className='home icon' />Home</span></a></button>)}
