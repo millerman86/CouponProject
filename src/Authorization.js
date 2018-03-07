@@ -14,6 +14,10 @@ const MyAuth = {
 
   getToken: function () {
     return sessionStorage.getItem('token');
+  },
+
+  setToken: function (token) {
+    return sessionStorage.setItem('token', token);
   }
 };
 

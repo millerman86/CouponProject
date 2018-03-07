@@ -5,9 +5,14 @@ import {Link} from 'react-router-dom';
 
 import React from 'react';
 import DataBaseEndPoint from '../../DataBaseEndPoint';
+import {addExcludedRoute} from '../../Actions/actions';
+import { connect } from 'react-redux';
+
 
 
 class Login extends React.Component {
+
+
 
 
     handleLogin = (evt) => {
@@ -36,6 +41,16 @@ class Login extends React.Component {
                 sessionStorage.setItem('usertype', reply.type);
             }
             console.log('reply type', reply.type);
+
+            // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
+            this.props.onLogin('login');
+
+
+            // store.dispatch(addExcludedRoute('login'));
+            // OR,
+            // const boundAddTodo = text => dispatch(addTodo(text))
+            // const boundCompleteTodo = index => dispatch(completeTodo(index))
+
             this.props.history.push('/HomePage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)
@@ -81,4 +96,17 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+
+
+
+const mapDispatchToProps = (state) => ({
+  onLogin: addExcludedRoute
+});
+
+
+const EnhancedLoginComponent = connect(
+  mapDispatchToProps
+)(Login);
+
+
+export default EnhancedLoginComponent;
