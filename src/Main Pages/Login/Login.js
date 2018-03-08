@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import React from 'react';
 import DataBaseEndPoint from '../../DataBaseEndPoint';
-import {addExcludedRoute} from '../../Actions/actions';
+import { addExcludedRoute, removeExcludedRoute } from '../../Actions/actions';
 import { connect } from 'react-redux';
 
 
@@ -45,8 +45,8 @@ class Login extends React.Component {
             console.log('reply type', reply.type);
 
             // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
-            this.props.dispatch(this.props.onLogin('login'));
-
+            this.props.dispatch(this.props.handleAddingLoginExclusion('login'));
+            this.props.dispatch(this.props.handleRemovingAdvertiseExclusion('advertise'));
 
             this.props.history.push('/HomePage');
         }).catch(function (ex) {
@@ -97,7 +97,8 @@ class Login extends React.Component {
 
 
 const mapDispatchToProps = (state) => ({
-  onLogin: addExcludedRoute
+  handleAddingLoginExclusion: addExcludedRoute,
+  handleRemovingAdvertiseExclusion: removeExcludedRoute
 });
 
 

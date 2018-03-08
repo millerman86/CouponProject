@@ -7,12 +7,12 @@ import {Provider} from 'react-redux';
 import App from './App.js';
 import {createStore} from 'redux';
 
-import {ADD_EXCLUDED_ROUTE} from './Actions/actions';
+import {ADD_EXCLUDED_ROUTE, REMOVE_EXCLUDED_ROUTE} from './Actions/actions';
 
 
 
 
-let initialState = {excludedRoutes: []};
+let initialState = {excludedRoutes: ['advertise']};
 
 
 
@@ -27,6 +27,10 @@ function rootReducer(state = [], action) {
           ...state.excludedRoutes,
           action.route
         ]
+      };
+    case REMOVE_EXCLUDED_ROUTE:
+      return {
+        excludedRoutes: state.excludedRoutes.filter(excludedRoute => excludedRoute !== action.route)
       };
     default:
       return state;
