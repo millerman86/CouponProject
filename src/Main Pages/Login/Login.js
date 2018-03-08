@@ -12,9 +12,7 @@ import { connect } from 'react-redux';
 
 class Login extends React.Component {
 
-    componentDidMount() {
-        console.log(this.props)
-    }
+
 
 
     handleLogin = (evt) => {
@@ -35,14 +33,11 @@ class Login extends React.Component {
             .then(function (response) {
                 return response.json()
             }).then((reply) => {
-            console.log('Here is your token', reply.token);
             sessionStorage.setItem('token', reply.token);
             sessionStorage.setItem('username', username);
-            console.log('this is your reply', reply); // {token: <token>}
             if (reply.type) {
                 sessionStorage.setItem('usertype', reply.type);
             }
-            console.log('reply type', reply.type);
 
             // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
             this.props.dispatch(this.props.handleAddingLoginExclusion('login'));
@@ -96,7 +91,7 @@ class Login extends React.Component {
 
 
 
-const mapDispatchToProps = (state) => ({
+const mapDispatchToProps = (dispatch) => ({
   handleAddingLoginExclusion: addExcludedRoute,
   handleRemovingAdvertiseExclusion: removeExcludedRoute
 });

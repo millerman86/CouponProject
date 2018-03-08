@@ -17,11 +17,9 @@ let initialState = {excludedRoutes: ['advertise']};
 
 
 //// Note here how you don't have to specify initial state as the first argument, since I'm doing it in the createStore function
-function rootReducer(state = [], action) {
-  console.log('you found me', action.type);
+function rootReducer(state, action) {
   switch (action.type) {
     case ADD_EXCLUDED_ROUTE:
-      console.log(action.type, 'blah');
       return {
         excludedRoutes: [
           ...state.excludedRoutes,
@@ -41,13 +39,13 @@ function rootReducer(state = [], action) {
 // This accepts the reducer and initialState as two arguments
 let store = createStore(rootReducer, initialState);
 
-
-
-const unsubscribe = store.subscribe(() => console.log(store.getState()));
-
-
-
-console.log(store.getState());
+//
+//
+// const unsubscribe = store.subscribe(() => console.log(store.getState()));
+//
+//
+//
+// console.log(store.getState());
 
 
 injectTapEventPlugin();

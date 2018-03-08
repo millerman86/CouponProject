@@ -91,7 +91,6 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
       this.setState({regularCoupons: coupons[0].regular});
       this.setState({featuredCoupons: coupons[0].featured});
     }).catch(function (ex) {
@@ -105,7 +104,6 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
       this.setState({regularCoupons: coupons[0].regular});
       this.setState({featuredCoupons: coupons[0].featured});
     }).catch(function (ex) {
@@ -145,12 +143,9 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
       this.setState({featuredCoupons: coupons[0].featured});
       this.setState({regularCoupons: coupons[0].regular});
 
-      console.log(coupons[0].pageBase);
-      console.log(coupons[0].pageSize);
       this.setState({pageBase: coupons[0].pageBase});
       this.setState({resultsPerPage: coupons[0].pageSize});
     }).catch(function (ex) {
