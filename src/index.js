@@ -10,10 +10,7 @@ import {createStore} from 'redux';
 import {ADD_EXCLUDED_ROUTE, REMOVE_EXCLUDED_ROUTE} from './Actions/actions';
 
 
-
-
 let initialState = {excludedRoutes: ['advertise']};
-
 
 
 //// Note here how you don't have to specify initial state as the first argument, since I'm doing it in the createStore function
@@ -22,8 +19,7 @@ function rootReducer(state, action) {
     case ADD_EXCLUDED_ROUTE:
       return {
         excludedRoutes: [
-          ...state.excludedRoutes,
-          action.route
+          action.route // since the result will be only login, advertise will no longer be excluded
         ]
       };
     case REMOVE_EXCLUDED_ROUTE:
@@ -32,7 +28,7 @@ function rootReducer(state, action) {
       };
     default:
       return state;
-    }
+  }
 }
 
 
@@ -54,7 +50,7 @@ injectTapEventPlugin();
 ReactDOM.render(
   <MuiThemeProvider>
     <Provider store={store}>
-      <App />
+        <App />
     </Provider>
   </MuiThemeProvider>,
   document.getElementById('root')

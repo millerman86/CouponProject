@@ -4,9 +4,11 @@
   "private": true,
   "dependencies": {
     "dropzone": "github:enyo/dropzone",
+    "history": "^4.7.2",
     "isemail": "^2.2.1",
     "isomorphic-fetch": "^2.2.1",
     "material-ui": "^0.17.1",
+    "prop-types": "^15.6.1",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-redux": "^5.0.3",

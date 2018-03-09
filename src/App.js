@@ -12,36 +12,62 @@ import Footer from './Shared/Footer';
 import MyAuth from './Authorization';
 import { connect } from 'react-redux';
 
-
-
-
-class App extends React.Component {
-
-
-  // THIS IS WHERE TO PUT THE LISTENER FOR WHEN THE STORE UPDATES WITH EXCLUDED ROUTES, SO THE NAVIGATION BAR CAN UPDATE WITH WHICH LINKS ARE CLICKABLE. PERHAPS NOT STRICTLY NECESSARY, BUT GOOD FOR PRACTICE
+import {PropTypes} from 'prop-types';
 
 
 
 
-  render() {
-    return (
-      <div>
 
-        <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-        <Navigation excludedRoutes={this.props.excludedRoutes}/>
-        <Routes />
-        <Footer />
+// class App extends React.Component {
+//
+//
+//   // THIS IS WHERE TO PUT THE LISTENER FOR WHEN THE STORE UPDATES WITH EXCLUDED ROUTES, SO THE NAVIGATION BAR CAN UPDATE WITH WHICH LINKS ARE CLICKABLE. PERHAPS NOT STRICTLY NECESSARY, BUT GOOD FOR PRACTICE
+//
+//
+//
+//
+//   render() {
+//     return (
+//       <div>
+//
+//         <Banner logoutVisible={MyAuth.isAuthenticated()}/>
+//         <Navigation excludedRoutes={this.props.excludedRoutes}/>
+//         <Routes />
+//         <Footer />
+//
+//       </div>
+//     );
+//   }
+// }
 
-      </div>
-    );
-  }
-}
+
+
+let App = ({excludedRoutes}) => {
+  return (
+    <div>
+
+      <Banner logoutVisible={MyAuth.isAuthenticated()}/>
+      <Navigation excludedRoutes={excludedRoutes}/>
+      <Routes />
+      <Footer />
+
+    </div>
+)};
+
+
+
+
+App.propTypes = {
+  excludedRoutes: PropTypes.array.isRequired
+};
+
 
 
 
 const mapStateToProps = (state) => ({
   excludedRoutes: state.excludedRoutes,
 });
+
 
 
 

@@ -40,10 +40,10 @@ class Login extends React.Component {
             }
 
             // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
-            this.props.dispatch(this.props.handleAddingLoginExclusion('login'));
-            this.props.dispatch(this.props.handleRemovingAdvertiseExclusion('advertise'));
+            this.props.dispatch(addExcludedRoute('login'));
+            // this.props.dispatch(this.props.handleRemovingAdvertiseExclusion('advertise'));
 
-            this.props.history.push('/HomePage');
+            // this.props.history.push('/HomePage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
@@ -88,17 +88,17 @@ class Login extends React.Component {
     }
 }
 
-
-
-
-const mapDispatchToProps = (dispatch) => ({
-  handleAddingLoginExclusion: addExcludedRoute,
-  handleRemovingAdvertiseExclusion: removeExcludedRoute
-});
+//
+//
+//
+// const mapDispatchToProps = (dispatch) => ({
+//   addExcludedRoute: addExcludedRoute,
+//   handleRemovingAdvertiseExclusion: removeExcludedRoute
+// });
 
 
 const EnhancedLoginComponent = connect(
-  mapDispatchToProps
+  // mapDispatchToProps
 )(Login);
 
 
