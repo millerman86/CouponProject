@@ -35,6 +35,15 @@ function rootReducer(state, action) {
 // This accepts the reducer and initialState as two arguments
 let store = createStore(rootReducer, initialState);
 
+
+//
+// const Root = ({ store }) => (
+//   <Provider store={store}>
+//     <Router>
+//       <Route path="/" component={App} />
+//     </Router>
+//   </Provider>
+// );
 //
 //
 // const unsubscribe = store.subscribe(() => console.log(store.getState()));

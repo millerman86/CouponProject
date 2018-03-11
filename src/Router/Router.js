@@ -35,7 +35,6 @@ const PrivateRoute = ({component: Component, authorized, ...rest}) => {
 
 
 
-
 export default () => (
     <Router history={null}>
 
@@ -55,5 +54,3 @@ export default () => (
 
     </Router>
 );
-
-
