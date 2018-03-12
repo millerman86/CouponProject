@@ -4,10 +4,19 @@ import './index.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import {Provider} from 'react-redux';
-import App from './App.js';
 import {createStore} from 'redux';
 
+
 import {ADD_EXCLUDED_ROUTE, REMOVE_EXCLUDED_ROUTE} from './Actions/actions';
+
+import App from './App.js'
+
+
+
+
+
+
+
 
 
 let initialState = {excludedRoutes: ['advertise']};
@@ -36,21 +45,17 @@ function rootReducer(state, action) {
 let store = createStore(rootReducer, initialState);
 
 
-//
-// const Root = ({ store }) => (
-//   <Provider store={store}>
-//     <Router>
-//       <Route path="/" component={App} />
-//     </Router>
-//   </Provider>
-// );
-//
-//
-// const unsubscribe = store.subscribe(() => console.log(store.getState()));
-//
-//
-//
-// console.log(store.getState());
+
+
+
+
+
+
+
+
+
+
+
 
 
 injectTapEventPlugin();
@@ -67,3 +72,56 @@ ReactDOM.render(
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
+// const Root = ({ store }) => (
+//   <Provider store={store}>
+//     <Router>
+//       <Route path="/" component={App} />
+//     </Router>
+//   </Provider>
+// );
+//
+//
+// const unsubscribe = store.subscribe(() => console.log(store.getState()));
+//
+//
+//
+// console.log(store.getState());

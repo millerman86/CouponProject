@@ -1,18 +1,110 @@
 import React from 'react';
 
-
-import Routes from './Router/Router';
-
-
 import Banner from './Shared/Banner';
 import Navigation from './Shared/Navigation';
-import Footer from './Shared/Footer';
 
 
-import MyAuth from './Authorization';
 import { connect } from 'react-redux';
 
 import {PropTypes} from 'prop-types';
+
+
+import HomePage from './Main Pages/HomePage/Homepage.js';
+import Login from './Main Pages/Login/Login.js';
+import SubmitCoupons from './Main Pages/SubmitCoupons/SubmitCoupons.js';
+import CreateAccount from './Main Pages/CreateAccount/CreateAccount.js';
+import Clearance from './Main Pages/Clearance/Clearance';
+import AdvertiseSwitch from './Main Pages/Advertise/Advertise';
+
+import {
+  BrowserRouter,
+  Route,
+  Redirect
+} from 'react-router-dom';
+
+
+
+
+const myAuth = {
+  isAuthenticated: function () {
+    const result = sessionStorage.getItem('token');
+    return !!result;
+  }
+};
+
+
+// THIS FOR SURE WORKS
+const PrivateRoute = ({component: Component, authorized, ...rest}) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) => authorized === true ? (<Component {...props} />) : (<Redirect to={{pathname: '/login', state: {from: props.location}}} />)}
+    />
+  )
+};
+
+
+let App = ({excludedRoutes}) => (
+  <BrowserRouter>
+    <div className="">
+
+      <Banner />
+      <Navigation excludedRoutes={excludedRoutes} />
+
+      <Route exact path='/' component={HomePage}/>
+      <Route exact path='/homepage' component={HomePage}/>
+      <Route exact path='/login' component={Login}/>
+      <Route exact path='/submitcoupons' component={SubmitCoupons}/>
+      <Route exact path='/createaccount' component={CreateAccount}/>
+      <Route exact path='/clearance' component={Clearance}/>
+
+      <PrivateRoute exact path='/advertise' authorized={myAuth.isAuthenticated()} component={AdvertiseSwitch}/>
+
+
+
+    </div>
+  </BrowserRouter>
+);
+
+
+
+App.propTypes = {
+  excludedRoutes: PropTypes.array.isRequired
+};
+
+
+
+
+const mapStateToProps = (state) => ({
+  excludedRoutes: state.excludedRoutes,
+});
+
+
+
+
+App = connect(
+  mapStateToProps
+)(App);
+
+export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -42,49 +134,36 @@ import {PropTypes} from 'prop-types';
 
 
 
-let App = ({excludedRoutes}) => {
-  return (
-    <div>
-
-      <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-      <Navigation excludedRoutes={excludedRoutes}/>
-      <Routes />
-      <Footer />
-
-    </div>
-)};
-
-
-
-
-App.propTypes = {
-  excludedRoutes: PropTypes.array.isRequired
-};
-
-
-
-
-const mapStateToProps = (state) => ({
-  excludedRoutes: state.excludedRoutes,
-});
-
-
-
-
-const AppWithDynamicRouting = connect(
-  mapStateToProps
-)(App);
-
-export default AppWithDynamicRouting;
-
-
-
-
-
-
-
-
-
+//
+//
+// App.propTypes = {
+//   excludedRoutes: PropTypes.array.isRequired
+// };
+//
+//
+//
+//
+// const mapStateToProps = (state) => ({
+//   excludedRoutes: state.excludedRoutes,
+// });
+//
+//
+//
+//
+// const AppWithDynamicRouting = connect(
+//   mapStateToProps
+// )(App);
+//
+// export default AppWithDynamicRouting;
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
