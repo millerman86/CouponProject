@@ -13,7 +13,7 @@ let initialState = ['advertise'];
 
 
 //// Note here how you don't have to specify initial state as the first argument, since I'm doing it in the createStore function
-export default function excludedRoutesReducer(state = initialState, action) {
+export default function rootReducer(state = initialState, action) {
   switch (action.type) {
     case ADD_EXCLUDED_ROUTE:
       return {

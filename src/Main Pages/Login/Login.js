@@ -43,6 +43,8 @@ class Login extends React.Component {
             this.props.dispatch(addExcludedRoute('login'));
             // this.props.dispatch(this.props.handleRemovingAdvertiseExclusion('advertise'));
 
+
+
             this.props.history.push('/HomePage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)

@@ -54,12 +54,12 @@ const My404Component = () => (
 );
 
 
-let App = ({excludedRoutes}) => (
+let App = () => (
   <BrowserRouter>
     <div className="">
 
       <Banner />
-      <Navigation excludedRoutes={excludedRoutes}/>
+      <Navigation />
 
       <Switch>
 

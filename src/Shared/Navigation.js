@@ -1,12 +1,12 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
 import {NavLink} from 'react-router-dom'
-
+import {connect} from 'react-redux';
 
 
 // SINCE THIS COMPONENT PROBABLY SHOULDN'T NEED TO HOLD STATE, I'LL JUST LEAVE IT AS STC FOR NOW, AND LISTEN FOR STATE FROM THE REDUX STORE USING THE OBSERVER PATTERN
 
-const Navigation = ({excludedRoutes}) => {
+let Navigation = ({excludedRoutes}) => {
   console.log("EXCLUDED ROUTES ARE: ", excludedRoutes);
   return (
     <div className="ui seven buttons">
@@ -18,6 +18,19 @@ const Navigation = ({excludedRoutes}) => {
       {excludedRoutes.includes('advertise') ? null : (<button className='ui button'><NavLink to='/advertise'><span className='black-letters'><i className='announcement icon' />ADVERTISE</span></NavLink></button>)}
     </div>
   )};
+
+
+
+const mapStateToProps = (state) => ({
+  excludedRoutes: state.excludedRoutes
+});
+
+
+
+Navigation = connect(
+  mapStateToProps
+)(Navigation);
+
 
 
 export default Navigation;

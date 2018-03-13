@@ -1,30 +1,30 @@
 import React from 'react';
-import FilterLink from './FilterLink'
-import {VisibilityFilters} from '../../Redux/actions';
-
-
-
-const Header = () => (
-  <p>
-    Show:
-    {" "}
-    <FilterLink filter={VisibilityFilters.SORT_PRODUCTS}>
-      By Product
-    </FilterLink>
-    {" | "}
-    <FilterLink filter={VisibilityFilters.SORT_COMPANY}>
-      By Company
-    </FilterLink>
-    {" | "}
-    <FilterLink filter={VisibilityFilters.SORT_PRICE}>
-      By Price
-    </FilterLink>
-    {" | "}
-    <FilterLink filter={VisibilityFilters.SORT_SHIPPING}>
-      By Shipping
-    </FilterLink>
-  </p>
-);
+// import FilterLink from './FilterLink'
+// import {VisibilityFilters} from '../../Redux/actions';
+//
+//
+//
+// const Header = () => (
+//   <p>
+//     Show:
+//     {" "}
+//     <FilterLink filter={VisibilityFilters.SORT_PRODUCTS}>
+//       By Product
+//     </FilterLink>
+//     {" | "}
+//     <FilterLink filter={VisibilityFilters.SORT_COMPANY}>
+//       By Company
+//     </FilterLink>
+//     {" | "}
+//     <FilterLink filter={VisibilityFilters.SORT_PRICE}>
+//       By Price
+//     </FilterLink>
+//     {" | "}
+//     <FilterLink filter={VisibilityFilters.SORT_SHIPPING}>
+//       By Shipping
+//     </FilterLink>
+//   </p>
+// );
 
 // filter={ VisibilityFilters.SHOW_ALL }
 // filter={ VisibilityFilters.SHOW_ACTIVE }
@@ -44,7 +44,7 @@ class ClippedContainer extends React.Component {
       <div>
 
 
-        <Header />
+        {/*<Header />*/}
 
 
 
