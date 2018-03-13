@@ -7,7 +7,7 @@ import visibilityFilter from './visibilityfilterreducer'
 
 const rootReducer = combineReducers({
   excludedRoutes,
-  // visibilityFilter
+  visibilityFilter
 });
 
 export default rootReducer;

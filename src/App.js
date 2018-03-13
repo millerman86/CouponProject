@@ -54,7 +54,9 @@ const My404Component = () => (
 );
 
 
-let App = () => (
+let App = () => {
+
+  return (
   <BrowserRouter>
     <div className="">
 
@@ -84,7 +86,7 @@ let App = () => (
 
     </div>
   </BrowserRouter>
-);
+)};
 
 
 

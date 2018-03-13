@@ -13,8 +13,6 @@ import { connect } from 'react-redux';
 class Login extends React.Component {
 
 
-
-
     handleLogin = (evt) => {
         evt.preventDefault();
         let username = this.refs.username.value;
@@ -41,7 +39,7 @@ class Login extends React.Component {
 
             // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
             this.props.dispatch(addExcludedRoute('login'));
-            // this.props.dispatch(this.props.handleRemovingAdvertiseExclusion('advertise'));
+            this.props.dispatch(removeExcludedRoute('advertise'));
 
 
 
