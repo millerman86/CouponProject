@@ -14,7 +14,7 @@ import CreateAccount from './Main Pages/CreateAccount/CreateAccount.js';
 import Clearance from './Main Pages/Clearance';
 import Local from './Main Pages/Local';
 import Search from './Main Pages/Search';
-
+import Clipped from './Main Pages/Clipped';
 
 import AdvertiseSwitch from './Main Pages/Advertise/Advertise';
 import Footer from './Shared/Footer';
@@ -60,7 +60,9 @@ let App = ({excludedRoutes}) => (
 
       <Banner />
       <Navigation excludedRoutes={excludedRoutes}/>
+
       <Switch>
+
         <Route exact path='/' component={HomePage}/>
         <Route exact path='/homepage' component={HomePage}/>
         <Route exact path='/login' component={Login}/>
@@ -69,7 +71,10 @@ let App = ({excludedRoutes}) => (
         <Route exact path='/clearance' component={Clearance}/>
         <Route exact path='/search' component={Search}/>
         <Route exact path='/local' component={Local}/>
+        <Route exact path='/clipped' component={Clipped}/>
+
         <My404Component/>
+
       </Switch>
 
 
@@ -134,11 +139,6 @@ export default App;
 //   </div>
 // );
 //
-
-{/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/
-}
-{/*FOR NOW AT LEAST, YOU CAN SEE ALL THE ROUTES IN THE NAVIGATION BAR, BUT /ADVERTISE IS HIDDEN BEHIND PRIVATE ROUTE LOGIC*/
-}
 
 
 // EVENTUALLY, THESE WILL HAVE TO BE A COMPOSITIONAL PART OF THE BANNER, BUT FOR NOW, JUST LEAVE THEM ALONE

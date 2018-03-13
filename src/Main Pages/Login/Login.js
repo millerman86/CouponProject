@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import React from 'react';
 import DataBaseEndPoint from '../../DataBaseEndPoint';
-import { addExcludedRoute, removeExcludedRoute } from '../../Actions/actions';
+import { addExcludedRoute, removeExcludedRoute } from '../../Redux/actions';
 import { connect } from 'react-redux';
 
 
