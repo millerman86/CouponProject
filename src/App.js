@@ -4,25 +4,28 @@ import Banner from './Shared/Banner';
 import Navigation from './Shared/Navigation';
 
 
-import { connect } from 'react-redux';
-
-import {PropTypes} from 'prop-types';
+import {connect} from 'react-redux';
 
 
 import HomePage from './Main Pages/HomePage/Homepage.js';
 import Login from './Main Pages/Login/Login.js';
 import SubmitCoupons from './Main Pages/SubmitCoupons/SubmitCoupons.js';
 import CreateAccount from './Main Pages/CreateAccount/CreateAccount.js';
-import Clearance from './Main Pages/Clearance/Clearance';
+import Clearance from './Main Pages/Clearance';
+import Local from './Main Pages/Local';
+import Search from './Main Pages/Search';
+
+
 import AdvertiseSwitch from './Main Pages/Advertise/Advertise';
+import Footer from './Shared/Footer';
+
 
 import {
   BrowserRouter,
   Route,
-  Redirect
+  Redirect,
+  Switch
 } from 'react-router-dom';
-
-
 
 
 const myAuth = {
@@ -38,10 +41,17 @@ const PrivateRoute = ({component: Component, authorized, ...rest}) => {
   return (
     <Route
       {...rest}
-      render={(props) => authorized === true ? (<Component {...props} />) : (<Redirect to={{pathname: '/login', state: {from: props.location}}} />)}
+      render={(props) => authorized === true ? (<Component {...props} />) : (
+          <Redirect to={{pathname: '/login', state: {from: props.location}}}/>)}
     />
   )
 };
+
+const My404Component = () => (
+  <div className='center-align'>
+    I'M SO SORRY, I CAN'T FIND YOUR PAGE!
+  </div>
+);
 
 
 let App = ({excludedRoutes}) => (
@@ -49,18 +59,23 @@ let App = ({excludedRoutes}) => (
     <div className="">
 
       <Banner />
-      <Navigation excludedRoutes={excludedRoutes} />
+      <Navigation excludedRoutes={excludedRoutes}/>
+      <Switch>
+        <Route exact path='/' component={HomePage}/>
+        <Route exact path='/homepage' component={HomePage}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/submitcoupons' component={SubmitCoupons}/>
+        <Route exact path='/createaccount' component={CreateAccount}/>
+        <Route exact path='/clearance' component={Clearance}/>
+        <Route exact path='/search' component={Search}/>
+        <Route exact path='/local' component={Local}/>
+        <My404Component/>
+      </Switch>
 
-      <Route exact path='/' component={HomePage}/>
-      <Route exact path='/homepage' component={HomePage}/>
-      <Route exact path='/login' component={Login}/>
-      <Route exact path='/submitcoupons' component={SubmitCoupons}/>
-      <Route exact path='/createaccount' component={CreateAccount}/>
-      <Route exact path='/clearance' component={Clearance}/>
 
       <PrivateRoute exact path='/advertise' authorized={myAuth.isAuthenticated()} component={AdvertiseSwitch}/>
 
-
+      <Footer />
 
     </div>
   </BrowserRouter>
@@ -68,18 +83,9 @@ let App = ({excludedRoutes}) => (
 
 
 
-App.propTypes = {
-  excludedRoutes: PropTypes.array.isRequired
-};
-
-
-
-
 const mapStateToProps = (state) => ({
   excludedRoutes: state.excludedRoutes,
 });
-
-
 
 
 App = connect(
@@ -97,73 +103,6 @@ export default App;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-// class App extends React.Component {
-//
-//
-//   // THIS IS WHERE TO PUT THE LISTENER FOR WHEN THE STORE UPDATES WITH EXCLUDED ROUTES, SO THE NAVIGATION BAR CAN UPDATE WITH WHICH LINKS ARE CLICKABLE. PERHAPS NOT STRICTLY NECESSARY, BUT GOOD FOR PRACTICE
-//
-//
-//
-//
-//   render() {
-//     return (
-//       <div>
-//
-//         <Banner logoutVisible={MyAuth.isAuthenticated()}/>
-//         <Navigation excludedRoutes={this.props.excludedRoutes}/>
-//         <Routes />
-//         <Footer />
-//
-//       </div>
-//     );
-//   }
-// }
-
-
-
-//
-//
-// App.propTypes = {
-//   excludedRoutes: PropTypes.array.isRequired
-// };
-//
-//
-//
-//
-// const mapStateToProps = (state) => ({
-//   excludedRoutes: state.excludedRoutes,
-// });
-//
-//
-//
-//
-// const AppWithDynamicRouting = connect(
-//   mapStateToProps
-// )(App);
-//
-// export default AppWithDynamicRouting;
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -196,18 +135,10 @@ export default App;
 // );
 //
 
-{/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/}
-{/*FOR NOW AT LEAST, YOU CAN SEE ALL THE ROUTES IN THE NAVIGATION BAR, BUT /ADVERTISE IS HIDDEN BEHIND PRIVATE ROUTE LOGIC*/}
-
-
-
-
-
-
-
-
-
-
+{/*FIGURE OUT A WAY TO MAKE THE NAVIGATION BAR CHANGE EVERY TIME THE EXCLUDEDROUTES ARRAY CHANGES. THE LOGIC IN THE NAVIGATION BAR IS ALREADY READY TO BE UTILIZED*/
+}
+{/*FOR NOW AT LEAST, YOU CAN SEE ALL THE ROUTES IN THE NAVIGATION BAR, BUT /ADVERTISE IS HIDDEN BEHIND PRIVATE ROUTE LOGIC*/
+}
 
 
 // EVENTUALLY, THESE WILL HAVE TO BE A COMPOSITIONAL PART OF THE BANNER, BUT FOR NOW, JUST LEAVE THEM ALONE

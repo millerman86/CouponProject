@@ -11,7 +11,7 @@ const Navigation = ({excludedRoutes}) => {
   return (
     <div className="ui seven buttons">
       {excludedRoutes.includes('homepage') ? null : (<button className='ui button'><NavLink to='/homepage'><span className='black-letters'><i className='home icon' />Home</span></NavLink></button>)}
-      {excludedRoutes.includes('redirects') ? null : (<button className="ui button"><NavLink to='/redirects'><span className='black-letters'><i className='location arrow icon' />Local</span></NavLink></button>)}
+      {excludedRoutes.includes('redirects') ? null : (<button className="ui button"><NavLink to='/local'><span className='black-letters'><i className='location arrow icon' />Local</span></NavLink></button>)}
       {excludedRoutes.includes('clearance') ? null : (<button className='ui button'><NavLink to='/clearance'><span className='black-letters'><i className="dollar icon" />Clearance</span></NavLink></button>)}
       {excludedRoutes.includes('search') ? null : (<button className='ui button'><NavLink to='/search'><span className='black-letters'><i className='find icon' />Search Coupons</span></NavLink></button>)}
       {excludedRoutes.includes('login') ? null : (<button className='ui button'><NavLink to='/login'><span className='black-letters'><i className='empty star icon' />Login</span></NavLink></button>)}

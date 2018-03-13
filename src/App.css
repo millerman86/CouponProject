@@ -359,3 +359,8 @@
 .align-center {
   text-align: center;
 }
+
+.center-align {
+  margin: 2em;
+  text-align: center;
+}
