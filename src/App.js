@@ -58,7 +58,7 @@ let App = () => {
 
   return (
   <BrowserRouter>
-    <div className="">
+    <div>
 
       <Banner />
       <Navigation />
@@ -75,12 +75,13 @@ let App = () => {
         <Route exact path='/local' component={Local}/>
         <Route exact path='/clipped' component={Clipped}/>
 
+        <PrivateRoute exact path='/advertise' authorized={myAuth.isAuthenticated()} component={AdvertiseSwitch}/>
+
         <My404Component/>
 
       </Switch>
 
 
-      <PrivateRoute exact path='/advertise' authorized={myAuth.isAuthenticated()} component={AdvertiseSwitch}/>
 
       <Footer />
 

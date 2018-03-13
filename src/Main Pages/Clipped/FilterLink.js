@@ -8,9 +8,13 @@ import Link from './Link';
 
 
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
-});
+const mapStateToProps = (state, ownProps) => {
+
+  console.log(state.visibilityFilter);
+  return ({
+    active: ownProps.filter === state.visibilityFilter
+  });
+}
 
 
 
