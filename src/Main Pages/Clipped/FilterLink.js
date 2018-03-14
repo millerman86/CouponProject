@@ -14,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     active: ownProps.filter === state.visibilityFilter
   });
-}
+};
 
 
 
@@ -34,3 +34,5 @@ const FilterLink = connect(
 
 
 export default FilterLink
+
+

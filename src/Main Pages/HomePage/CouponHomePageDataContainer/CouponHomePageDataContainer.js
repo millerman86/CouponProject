@@ -2,6 +2,9 @@ import React from 'react';
 
 
 import DataBaseEndPoint from '../../../DataBaseEndPoint';
+import {clipCoupon} from '../../../Redux/actions';
+
+
 
 
 const getUser = () => {
@@ -26,7 +29,6 @@ class CouponHomePageDataContainer extends React.Component {
         .then(function (response) {
           return response.json()
         }).then((coupons) => {
-        console.log('parsed coupons', coupons);
         this.setState({regularCoupons: coupons[0].regular});
         this.setState({pageBase: coupons[0].pageBase});
         this.setState({resultsPerPage: coupons[0].pageSize});
@@ -46,7 +48,6 @@ class CouponHomePageDataContainer extends React.Component {
         .then(function (response) {
           return response.json()
         }).then((coupons) => {
-        console.log('parsed coupons', coupons);
         this.setState({featuredCoupons: coupons[0].featured});
         this.setState({regularCoupons: coupons[0].regular});
         this.setState({pageBase: coupons[0].pageBase});
@@ -64,7 +65,6 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
       this.setState({regularCoupons: coupons});
     }).catch(function (ex) {
       console.log('parsing failed', ex)
@@ -77,7 +77,6 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
       this.setState({regularCoupons: coupons[0].regular});
       this.setState({pageBase: coupons[0].pageBase});
     }).catch(function (ex) {
@@ -111,7 +110,7 @@ class CouponHomePageDataContainer extends React.Component {
     })
   };
 
-  handleCouponClip = (couponId) => {
+  handleCouponClip = (couponId, coupon) => {
     console.log(getUser(), couponId + 'weoiuj');
 
     let payload = {
@@ -128,11 +127,13 @@ class CouponHomePageDataContainer extends React.Component {
       .then(function (response) {
         return response.json()
       }).then((coupons) => {
-      console.log('parsed coupons', coupons);
+      // WHEN THE COUPON IS SUCCESSFULLY CLIPPED, THEN PERSIST THE COUPON TO THE LOCAL STORAGE
+      console.log('SENDING YOUR COUPON TO THE REDUX STORE', coupon);
+      this.props.dispatch(clipCoupon(coupon)); // THIS SHOULD WORK JUST FINE, BUT THE CONNECT FUNCTION HAPPENS FROM HOMEPAGE
+
       this.setState({regularCoupons: coupons[0].regular});
       this.setState({featuredCoupons: coupons[0].featured});
       this.forceUpdate();
-      console.log(this.state.regularCoupons);
     }).catch(function (ex) {
       console.log('parsing failed', ex)
     })
@@ -155,3 +156,5 @@ class CouponHomePageDataContainer extends React.Component {
 }
 
 export default CouponHomePageDataContainer;
+
+

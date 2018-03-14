@@ -68,3 +68,12 @@ export const VisibilityFilters = {
   SORT_COMPANY: 'SORT_COMPANY',
   SORT_SHIPPING: 'SORT_SHIPPING'
 };
+
+
+export const clipCoupon = (coupon) => {
+  console.log(coupon);
+  return ({
+    type: 'CLIP_COUPON',
+    coupon
+  });
+};

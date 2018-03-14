@@ -33,6 +33,8 @@ import strawberrycake8inch from './../../../public/images/strawberry-cake-8-inch
 import table from './../../../public/images/table.jpg';
 import toys from './../../../public/images/toys.jpg';
 
+import {connect} from 'react-redux';
+
 
 // UNTIL FURTHER NOTICE, THE PICTURES USED BELOW ARE RANDOM AND FOR PURELY COSMETIC REASONS
 let products = [
@@ -148,7 +150,11 @@ class HomePage extends CouponHomePageDataContainer { // THIS EXTENDS THE COUPONH
   }
 }
 
-export default HomePage;
+
+export default connect()(HomePage);
+
+
+
 
 
 // IF YOU WOULD LIKE TO RENDER THE SUPER CLASS' RENDER BODY, USE {SUPER.RENDER()}

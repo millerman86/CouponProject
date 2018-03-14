@@ -2,7 +2,7 @@ import React from 'react';
 import FilterLink from './FilterLink'
 import {VisibilityFilters} from '../../Redux/actions';
 
-
+import {connect} from 'react-redux';
 
 const Header = () => (
   <p>
@@ -38,6 +38,7 @@ const Header = () => (
 
 class ClippedContainer extends React.Component {
   render() {
+    console.log(this.props.coupons);
     return (
 
 
@@ -61,7 +62,7 @@ class ClippedContainer extends React.Component {
         </thead>
         <tbody>
         <tr>
-          <td>Cell</td>
+          <td>banana</td>
           <td>Cell</td>
           <td>Cell</td>
           <td>Cell</td>
@@ -98,12 +99,15 @@ class ClippedContainer extends React.Component {
       </table>
 
       </div>
-
-
-
-
     );
   }
 }
 
-export default ClippedContainer;
+const mapStateToProps = (state) => ({
+  coupons: state.coupons
+});
+
+
+export default connect(
+  mapStateToProps
+)(ClippedContainer);
