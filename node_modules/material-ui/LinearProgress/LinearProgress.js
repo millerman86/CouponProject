@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -195,34 +199,34 @@ LinearProgress.defaultProps = {
   max: 100
 };
 LinearProgress.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? LinearProgress.propTypes = {
   /**
    * The color of the progress bar, defaults to
    * primary color of theme.
    */
-  color: _react.PropTypes.string,
+  color: _propTypes2.default.string,
   /**
    * The max value of progress, only works in determinate mode.
    */
-  max: _react.PropTypes.number,
+  max: _propTypes2.default.number,
   /**
    * The min value of progress, only works in determinate mode.
    */
-  min: _react.PropTypes.number,
+  min: _propTypes2.default.number,
   /**
    * The mode of show your progress, indeterminate for when
    * there is no value for progress.
    */
-  mode: _react.PropTypes.oneOf(['determinate', 'indeterminate']),
+  mode: _propTypes2.default.oneOf(['determinate', 'indeterminate']),
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * The value of progress, only works in determinate mode.
    */
-  value: _react.PropTypes.number
+  value: _propTypes2.default.number
 } : void 0;
 exports.default = LinearProgress;

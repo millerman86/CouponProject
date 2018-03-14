@@ -1,11 +1,4 @@
-import React from 'react';
-
-
-
 import {ADD_EXCLUDED_ROUTE, REMOVE_EXCLUDED_ROUTE} from '../Redux/actions';
-
-
-
 
 
 let initialState = ['advertise'];
@@ -24,7 +17,7 @@ export default function rootReducer(state = initialState, action) {
       } return [...state];
 
     case REMOVE_EXCLUDED_ROUTE:
-      return state.filter(excludedRoute => excludedRoute != action.route );
+      return state.filter(excludedRoute => excludedRoute !== action.route );
     default:
       return state;
   }

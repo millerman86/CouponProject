@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _Paper = require('../Paper');
 
 var _Paper2 = _interopRequireDefault(_Paper);
@@ -174,41 +178,41 @@ process.env.NODE_ENV !== "production" ? Card.propTypes = {
   /**
    * Can be used to render elements inside the Card.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * Override the inline-styles of the container element.
    */
-  containerStyle: _react.PropTypes.object,
+  containerStyle: _propTypes2.default.object,
   /**
    * If true, this card component is expandable. Can be set on any child of the `Card` component.
    */
-  expandable: _react.PropTypes.bool,
+  expandable: _propTypes2.default.bool,
   /**
    * Whether this card is expanded.
    * If `true` or `false` the component is controlled.
    * if `null` the component is uncontrolled.
    */
-  expanded: _react.PropTypes.bool,
+  expanded: _propTypes2.default.bool,
   /**
    * Whether this card is initially expanded.
    */
-  initiallyExpanded: _react.PropTypes.bool,
+  initiallyExpanded: _propTypes2.default.bool,
   /**
    * Callback function fired when the `expandable` state of the card has changed.
    *
    * @param {boolean} newExpandedState Represents the new `expanded` state of the card.
    */
-  onExpandChange: _react.PropTypes.func,
+  onExpandChange: _propTypes2.default.func,
   /**
    * If true, this card component will include a button to expand the card. `CardTitle`,
    * `CardHeader` and `CardActions` implement `showExpandableButton`. Any child component
    * of `Card` can implements `showExpandableButton` or forwards the property to a child
    * component supporting it.
    */
-  showExpandableButton: _react.PropTypes.bool,
+  showExpandableButton: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = Card;

@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -370,7 +374,7 @@ RaisedButton.defaultProps = {
   secondary: false
 };
 RaisedButton.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? RaisedButton.propTypes = {
   /**
@@ -378,21 +382,21 @@ process.env.NODE_ENV !== "production" ? RaisedButton.propTypes = {
    * but not the default disabled background color
    * (use `disabledBackgroundColor` for this).
    */
-  backgroundColor: _react.PropTypes.string,
+  backgroundColor: _propTypes2.default.string,
   /**
    * Override the inline-styles of the button element.
    */
-  buttonStyle: _react.PropTypes.object,
+  buttonStyle: _propTypes2.default.object,
   /**
    * The content of the button.
    * If a label is provided via the `label` prop, the text within the label
    * will be displayed in addition to the content provided here.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * The CSS class name of the root element.
    */
-  className: _react.PropTypes.string,
+  className: _propTypes2.default.string,
   /**
     * The element to use as the container for the RaisedButton. Either a string to
     * use a DOM element or a ReactElement. This is useful for wrapping the
@@ -400,36 +404,36 @@ process.env.NODE_ENV !== "production" ? RaisedButton.propTypes = {
     * that it passes all of its given props through to the underlying DOM
     * element and renders its children prop for proper integration.
     */
-  containerElement: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+  containerElement: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]),
   /**
    * If true, the element's ripple effect will be disabled.
    */
-  disableTouchRipple: _react2.default.PropTypes.bool,
+  disableTouchRipple: _propTypes2.default.bool,
   /**
    * If true, the button will be disabled.
    */
-  disabled: _react.PropTypes.bool,
+  disabled: _propTypes2.default.bool,
   /**
    * Override the default background color for the button
    * when it is disabled.
    */
-  disabledBackgroundColor: _react.PropTypes.string,
+  disabledBackgroundColor: _propTypes2.default.string,
   /**
    * The color of the button's label when the button is disabled.
    */
-  disabledLabelColor: _react.PropTypes.string,
+  disabledLabelColor: _propTypes2.default.string,
   /**
    * If true, the button will take up the full width of its container.
    */
-  fullWidth: _react.PropTypes.bool,
+  fullWidth: _propTypes2.default.bool,
   /**
    * The URL to link to when the button is clicked.
    */
-  href: _react.PropTypes.string,
+  href: _propTypes2.default.string,
   /**
    * An icon to be displayed within the button.
    */
-  icon: _react.PropTypes.node,
+  icon: _propTypes2.default.node,
   /**
    * The label to be displayed within the button.
    * If content is provided via the `children` prop, that content will be
@@ -439,54 +443,54 @@ process.env.NODE_ENV !== "production" ? RaisedButton.propTypes = {
   /**
    * The color of the button's label.
    */
-  labelColor: _react.PropTypes.string,
+  labelColor: _propTypes2.default.string,
   /**
    * The position of the button's label relative to the button's `children`.
    */
-  labelPosition: _react.PropTypes.oneOf(['before', 'after']),
+  labelPosition: _propTypes2.default.oneOf(['before', 'after']),
   /**
    * Override the inline-styles of the button's label element.
    */
-  labelStyle: _react.PropTypes.object,
+  labelStyle: _propTypes2.default.object,
   /** @ignore */
-  onMouseDown: _react.PropTypes.func,
+  onMouseDown: _propTypes2.default.func,
   /** @ignore */
-  onMouseEnter: _react.PropTypes.func,
+  onMouseEnter: _propTypes2.default.func,
   /** @ignore */
-  onMouseLeave: _react.PropTypes.func,
+  onMouseLeave: _propTypes2.default.func,
   /** @ignore */
-  onMouseUp: _react.PropTypes.func,
+  onMouseUp: _propTypes2.default.func,
   /** @ignore */
-  onTouchEnd: _react.PropTypes.func,
+  onTouchEnd: _propTypes2.default.func,
   /** @ignore */
-  onTouchStart: _react.PropTypes.func,
+  onTouchStart: _propTypes2.default.func,
   /**
    * Callback function fired when the button is touch-tapped.
    *
    * @param {object} event TouchTap event targeting the button.
    */
-  onTouchTap: _react.PropTypes.func,
+  onTouchTap: _propTypes2.default.func,
   /**
    * Override the inline style of the button overlay.
    */
-  overlayStyle: _react.PropTypes.object,
+  overlayStyle: _propTypes2.default.object,
   /**
    * If true, the button will use the theme's primary color.
    */
-  primary: _react.PropTypes.bool,
+  primary: _propTypes2.default.bool,
   /**
    * Override the inline style of the ripple element.
    */
-  rippleStyle: _react.PropTypes.object,
+  rippleStyle: _propTypes2.default.object,
   /**
    * If true, the button will use the theme's secondary color.
    * If both `secondary` and `primary` are true, the button will use
    * the theme's primary color.
    */
-  secondary: _react.PropTypes.bool,
+  secondary: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = RaisedButton;

@@ -26,6 +26,10 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactDom = require('react-dom');
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
@@ -119,7 +123,7 @@ var ClickAwayListener = function (_Component) {
 }(_react.Component);
 
 process.env.NODE_ENV !== "production" ? ClickAwayListener.propTypes = {
-  children: _react.PropTypes.element,
-  onClickAway: _react.PropTypes.func
+  children: _propTypes2.default.element,
+  onClickAway: _propTypes2.default.func
 } : void 0;
 exports.default = ClickAwayListener;

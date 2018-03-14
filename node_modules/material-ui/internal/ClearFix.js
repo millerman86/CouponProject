@@ -16,6 +16,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _BeforeAfterWrapper = require('./BeforeAfterWrapper');
 
 var _BeforeAfterWrapper2 = _interopRequireDefault(_BeforeAfterWrapper);
@@ -52,11 +56,11 @@ var ClearFix = function ClearFix(_ref) {
 ClearFix.muiName = 'ClearFix';
 
 process.env.NODE_ENV !== "production" ? ClearFix.propTypes = {
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 
 exports.default = ClearFix;

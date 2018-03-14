@@ -21,7 +21,7 @@ let CouponCard = (props) => (
             <div className="coupon-card--price col-xs-12">
               {coupon.deal}
               <div className='float-right'>
-                ${coupon.price.includes('.00') ? parseInt(coupon.price) : coupon.price}
+                ${coupon.price.includes('.00') ? parseInt(coupon.price, 10) : coupon.price}
               </div>
               <div className='description'>
                 {coupon.product}

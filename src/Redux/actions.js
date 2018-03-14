@@ -1,10 +1,18 @@
-import React from 'react';
-
-
 export const ADD_EXCLUDED_ROUTE = 'ADD_EXCLUDED_ROUTE';
 export const REMOVE_EXCLUDED_ROUTE = 'REMOVE_EXCLUDED_ROUTE';
 
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
+
+
+
+
+export const VisibilityFilters = {
+  SORT_PRODUCTS: 'SORT_PRODUCTS',
+  SORT_PRICE: 'SORT_PRICE',
+  SORT_COMPANY: 'SORT_COMPANY',
+  SORT_SHIPPING: 'SORT_SHIPPING'
+};
+
 
 
 export function addExcludedRoute(route) {
@@ -60,14 +68,6 @@ export const setVisibilityFilter = (filter) => ({
   type: SET_VISIBILITY_FILTER,
   filter
 });
-
-
-export const VisibilityFilters = {
-  SORT_PRODUCTS: 'SORT_PRODUCTS',
-  SORT_PRICE: 'SORT_PRICE',
-  SORT_COMPANY: 'SORT_COMPANY',
-  SORT_SHIPPING: 'SORT_SHIPPING'
-};
 
 
 export const clipCoupon = (coupon) => {

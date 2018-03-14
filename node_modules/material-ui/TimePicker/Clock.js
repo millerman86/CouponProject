@@ -28,6 +28,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TimeDisplay = require('./TimeDisplay');
 
 var _TimeDisplay2 = _interopRequireDefault(_TimeDisplay);
@@ -223,12 +227,12 @@ Clock.defaultProps = {
   initialTime: new Date()
 };
 Clock.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? Clock.propTypes = {
-  format: _react.PropTypes.oneOf(['ampm', '24hr']),
-  initialTime: _react.PropTypes.object,
-  onChangeHours: _react.PropTypes.func,
-  onChangeMinutes: _react.PropTypes.func
+  format: _propTypes2.default.oneOf(['ampm', '24hr']),
+  initialTime: _propTypes2.default.object,
+  onChangeHours: _propTypes2.default.func,
+  onChangeMinutes: _propTypes2.default.func
 } : void 0;
 exports.default = Clock;

@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -67,42 +71,42 @@ process.env.NODE_ENV !== "production" ? TextFieldLabel.propTypes = {
   /**
    * The label contents.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * The css class name of the root element.
    */
-  className: _react.PropTypes.string,
+  className: _propTypes2.default.string,
   /**
    * Disables the label if set to true.
    */
-  disabled: _react.PropTypes.bool,
+  disabled: _propTypes2.default.bool,
   /**
    * The id of the target element that this label should refer to.
    */
-  htmlFor: _react.PropTypes.string,
+  htmlFor: _propTypes2.default.string,
   /**
    * @ignore
    * The material-ui theme applied to this component.
    */
-  muiTheme: _react.PropTypes.object.isRequired,
+  muiTheme: _propTypes2.default.object.isRequired,
   /**
    * Callback function for when the label is selected via a touch tap.
    *
    * @param {object} event TouchTap event targeting the text field label.
    */
-  onTouchTap: _react.PropTypes.func,
+  onTouchTap: _propTypes2.default.func,
   /**
    * True if the floating label should shrink.
    */
-  shrink: _react.PropTypes.bool,
+  shrink: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element when shrunk.
    */
-  shrinkStyle: _react.PropTypes.object,
+  shrinkStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 
 TextFieldLabel.defaultProps = {

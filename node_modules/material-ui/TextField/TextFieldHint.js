@@ -12,6 +12,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -54,19 +58,19 @@ process.env.NODE_ENV !== "production" ? TextFieldHint.propTypes = {
    * @ignore
    * The material-ui theme applied to this component.
    */
-  muiTheme: _react.PropTypes.object.isRequired,
+  muiTheme: _propTypes2.default.object.isRequired,
   /**
    * True if the hint text should be visible.
    */
-  show: _react.PropTypes.bool,
+  show: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * The hint text displayed.
    */
-  text: _react.PropTypes.node
+  text: _propTypes2.default.node
 } : void 0;
 
 TextFieldHint.defaultProps = {

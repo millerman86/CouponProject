@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -247,13 +251,13 @@ FlatButton.defaultProps = {
   secondary: false
 };
 FlatButton.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? FlatButton.propTypes = {
   /**
    * Color of button when mouse is not hovering over it.
    */
-  backgroundColor: _react.PropTypes.string,
+  backgroundColor: _propTypes2.default.string,
   /**
    * This is what will be displayed inside the button.
    * If a label is specified, the text within the label prop will
@@ -263,11 +267,11 @@ process.env.NODE_ENV !== "production" ? FlatButton.propTypes = {
    * that acts as our label to be displayed.) This only
    * applies to flat and raised buttons.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * The CSS class name of the root element.
    */
-  className: _react.PropTypes.string,
+  className: _propTypes2.default.string,
   /**
    * The element to use as the container for the FlatButton. Either a string to
    * use a DOM element or a ReactElement. This is useful for wrapping the
@@ -275,31 +279,31 @@ process.env.NODE_ENV !== "production" ? FlatButton.propTypes = {
    * that it passes all of its given props through to the underlying DOM
    * element and renders its children prop for proper integration.
    */
-  containerElement: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+  containerElement: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]),
   /**
    * If true, the element's ripple effect will be disabled.
    */
-  disableTouchRipple: _react2.default.PropTypes.bool,
+  disableTouchRipple: _propTypes2.default.bool,
   /**
    * Disables the button if set to true.
    */
-  disabled: _react.PropTypes.bool,
+  disabled: _propTypes2.default.bool,
   /**
    * If true, the button will take up the full width of its container.
    */
-  fullWidth: _react.PropTypes.bool,
+  fullWidth: _propTypes2.default.bool,
   /**
    * Color of button when mouse hovers over.
    */
-  hoverColor: _react.PropTypes.string,
+  hoverColor: _propTypes2.default.string,
   /**
    * The URL to link to when the button is clicked.
    */
-  href: _react.PropTypes.string,
+  href: _propTypes2.default.string,
   /**
    * Use this property to display an icon.
    */
-  icon: _react.PropTypes.node,
+  icon: _propTypes2.default.node,
   /**
    * Label for the button.
    */
@@ -307,47 +311,47 @@ process.env.NODE_ENV !== "production" ? FlatButton.propTypes = {
   /**
    * Place label before or after the passed children.
    */
-  labelPosition: _react.PropTypes.oneOf(['before', 'after']),
+  labelPosition: _propTypes2.default.oneOf(['before', 'after']),
   /**
    * Override the inline-styles of the button's label element.
    */
-  labelStyle: _react.PropTypes.object,
+  labelStyle: _propTypes2.default.object,
   /**
    * Callback function fired when the element is focused or blurred by the keyboard.
    *
    * @param {object} event `focus` or `blur` event targeting the element.
    * @param {boolean} isKeyboardFocused Indicates whether the element is focused.
    */
-  onKeyboardFocus: _react.PropTypes.func,
+  onKeyboardFocus: _propTypes2.default.func,
   /** @ignore */
-  onMouseEnter: _react.PropTypes.func,
+  onMouseEnter: _propTypes2.default.func,
   /** @ignore */
-  onMouseLeave: _react.PropTypes.func,
+  onMouseLeave: _propTypes2.default.func,
   /** @ignore */
-  onTouchStart: _react.PropTypes.func,
+  onTouchStart: _propTypes2.default.func,
   /**
    * Callback function fired when the button is touch-tapped.
    *
    * @param {object} event TouchTap event targeting the button.
    */
-  onTouchTap: _react.PropTypes.func,
+  onTouchTap: _propTypes2.default.func,
   /**
    * If true, colors button according to
    * primaryTextColor from the Theme.
    */
-  primary: _react.PropTypes.bool,
+  primary: _propTypes2.default.bool,
   /**
    * Color for the ripple after button is clicked.
    */
-  rippleColor: _react.PropTypes.string,
+  rippleColor: _propTypes2.default.string,
   /**
    * If true, colors button according to secondaryTextColor from the theme.
    * The primary prop has precendent if set to true.
    */
-  secondary: _react.PropTypes.bool,
+  secondary: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = FlatButton;

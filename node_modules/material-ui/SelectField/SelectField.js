@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TextField = require('../TextField');
 
 var _TextField2 = _interopRequireDefault(_TextField);
@@ -93,6 +97,7 @@ var SelectField = function (_Component) {
           menuItemStyle = _props.menuItemStyle,
           selectedMenuItemStyle = _props.selectedMenuItemStyle,
           underlineStyle = _props.underlineStyle,
+          dropDownMenuProps = _props.dropDownMenuProps,
           errorStyle = _props.errorStyle,
           disabled = _props.disabled,
           floatingLabelFixed = _props.floatingLabelFixed,
@@ -110,7 +115,7 @@ var SelectField = function (_Component) {
           onChange = _props.onChange,
           selectionRenderer = _props.selectionRenderer,
           value = _props.value,
-          other = (0, _objectWithoutProperties3.default)(_props, ['autoWidth', 'multiple', 'children', 'style', 'labelStyle', 'iconStyle', 'id', 'underlineDisabledStyle', 'underlineFocusStyle', 'menuItemStyle', 'selectedMenuItemStyle', 'underlineStyle', 'errorStyle', 'disabled', 'floatingLabelFixed', 'floatingLabelText', 'floatingLabelStyle', 'hintStyle', 'hintText', 'fullWidth', 'errorText', 'listStyle', 'maxHeight', 'menuStyle', 'onFocus', 'onBlur', 'onChange', 'selectionRenderer', 'value']);
+          other = (0, _objectWithoutProperties3.default)(_props, ['autoWidth', 'multiple', 'children', 'style', 'labelStyle', 'iconStyle', 'id', 'underlineDisabledStyle', 'underlineFocusStyle', 'menuItemStyle', 'selectedMenuItemStyle', 'underlineStyle', 'dropDownMenuProps', 'errorStyle', 'disabled', 'floatingLabelFixed', 'floatingLabelText', 'floatingLabelStyle', 'hintStyle', 'hintText', 'fullWidth', 'errorText', 'listStyle', 'maxHeight', 'menuStyle', 'onFocus', 'onBlur', 'onChange', 'selectionRenderer', 'value']);
 
 
       var styles = getStyles(this.props, this.context);
@@ -137,7 +142,7 @@ var SelectField = function (_Component) {
         }),
         _react2.default.createElement(
           _DropDownMenu2.default,
-          {
+          (0, _extends3.default)({
             disabled: disabled,
             style: (0, _simpleAssign2.default)(styles.dropDownMenu, menuStyle),
             labelStyle: (0, _simpleAssign2.default)(styles.label, labelStyle),
@@ -152,7 +157,7 @@ var SelectField = function (_Component) {
             maxHeight: maxHeight,
             multiple: multiple,
             selectionRenderer: selectionRenderer
-          },
+          }, dropDownMenuProps),
           children
         )
       );
@@ -168,7 +173,7 @@ SelectField.defaultProps = {
   multiple: false
 };
 SelectField.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? SelectField.propTypes = {
   /**
@@ -176,84 +181,88 @@ process.env.NODE_ENV !== "production" ? SelectField.propTypes = {
    * items inside the menu.
    * To control the width in CSS instead, leave this prop set to `false`.
    */
-  autoWidth: _react.PropTypes.bool,
+  autoWidth: _propTypes2.default.bool,
   /**
    * The `MenuItem` elements to populate the select field with.
    * If the menu items have a `label` prop, that value will
    * represent the selected menu item in the rendered select field.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * If true, the select field will be disabled.
    */
-  disabled: _react.PropTypes.bool,
+  disabled: _propTypes2.default.bool,
+  /**
+   * Object that can handle and override any property of component DropDownMenu.
+   */
+  dropDownMenuProps: _propTypes2.default.object,
   /**
    * Override the inline-styles of the error element.
    */
-  errorStyle: _react.PropTypes.object,
+  errorStyle: _propTypes2.default.object,
   /**
    * The error content to display.
    */
-  errorText: _react.PropTypes.node,
+  errorText: _propTypes2.default.node,
   /**
    * If true, the floating label will float even when no value is selected.
    */
-  floatingLabelFixed: _react.PropTypes.bool,
+  floatingLabelFixed: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the floating label.
    */
-  floatingLabelStyle: _react.PropTypes.object,
+  floatingLabelStyle: _propTypes2.default.object,
   /**
    * The content of the floating label.
    */
-  floatingLabelText: _react.PropTypes.node,
+  floatingLabelText: _propTypes2.default.node,
   /**
    * If true, the select field will take up the full width of its container.
    */
-  fullWidth: _react.PropTypes.bool,
+  fullWidth: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the hint element.
    */
-  hintStyle: _react.PropTypes.object,
+  hintStyle: _propTypes2.default.object,
   /**
    * The hint content to display.
    */
-  hintText: _react.PropTypes.node,
+  hintText: _propTypes2.default.node,
   /**
    * Override the inline-styles of the icon element.
    */
-  iconStyle: _react.PropTypes.object,
+  iconStyle: _propTypes2.default.object,
   /**
    * The id prop for the text field.
    */
-  id: _react.PropTypes.string,
+  id: _propTypes2.default.string,
   /**
    * Override the label style when the select field is inactive.
    */
-  labelStyle: _react.PropTypes.object,
+  labelStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the underlying `List` element.
    */
-  listStyle: _react.PropTypes.object,
+  listStyle: _propTypes2.default.object,
   /**
    * Override the default max-height of the underlying `DropDownMenu` element.
    */
-  maxHeight: _react.PropTypes.number,
+  maxHeight: _propTypes2.default.number,
   /**
    * Override the inline-styles of menu items.
    */
-  menuItemStyle: _react.PropTypes.object,
+  menuItemStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the underlying `DropDownMenu` element.
    */
-  menuStyle: _react.PropTypes.object,
+  menuStyle: _propTypes2.default.object,
   /**
    * If true, `value` must be an array and the menu will support
    * multiple selections.
    */
-  multiple: _react.PropTypes.bool,
+  multiple: _propTypes2.default.bool,
   /** @ignore */
-  onBlur: _react.PropTypes.func,
+  onBlur: _propTypes2.default.func,
   /**
    * Callback function fired when a menu item is selected.
    *
@@ -266,13 +275,13 @@ process.env.NODE_ENV !== "production" ? SelectField.propTypes = {
    * it wasn't already selected) or omitted (if it was already selected).
    * Otherwise, the `value` of the menu item.
    */
-  onChange: _react.PropTypes.func,
+  onChange: _propTypes2.default.func,
   /** @ignore */
-  onFocus: _react.PropTypes.func,
+  onFocus: _propTypes2.default.func,
   /**
    * Override the inline-styles of selected menu items.
    */
-  selectedMenuItemStyle: _react.PropTypes.object,
+  selectedMenuItemStyle: _propTypes2.default.object,
   /**
    * Customize the rendering of the selected item.
    *
@@ -281,30 +290,30 @@ process.env.NODE_ENV !== "production" ? SelectField.propTypes = {
    * it wasn't already selected) or omitted (if it was already selected).
    * Otherwise, the `value` of the menu item.
    */
-  selectionRenderer: _react.PropTypes.func,
+  selectionRenderer: _propTypes2.default.func,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * Override the inline-styles of the underline element when the select
    * field is disabled.
    */
-  underlineDisabledStyle: _react.PropTypes.object,
+  underlineDisabledStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the underline element when the select field
    * is focused.
    */
-  underlineFocusStyle: _react.PropTypes.object,
+  underlineFocusStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the underline element.
    */
-  underlineStyle: _react.PropTypes.object,
+  underlineStyle: _propTypes2.default.object,
   /**
    * If `multiple` is true, an array of the `value`s of the selected
    * menu items. Otherwise, the `value` of the selected menu item.
    * If provided, the menu will be a controlled component.
    */
-  value: _react.PropTypes.any
+  value: _propTypes2.default.any
 } : void 0;
 exports.default = SelectField;

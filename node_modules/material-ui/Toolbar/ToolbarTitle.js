@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function getStyles(props, context) {
@@ -95,20 +99,20 @@ var ToolbarTitle = function (_Component) {
 
 ToolbarTitle.muiName = 'ToolbarTitle';
 ToolbarTitle.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? ToolbarTitle.propTypes = {
   /**
    * The css class name of the root element.
    */
-  className: _react.PropTypes.string,
+  className: _propTypes2.default.string,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * The text to be displayed.
    */
-  text: _react.PropTypes.node
+  text: _propTypes2.default.node
 } : void 0;
 exports.default = ToolbarTitle;

@@ -20,6 +20,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Divider = function Divider(props, context) {
@@ -51,11 +55,11 @@ process.env.NODE_ENV !== "production" ? Divider.propTypes = {
   /**
    * If true, the `Divider` will be indented.
    */
-  inset: _react.PropTypes.bool,
+  inset: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 
 Divider.defaultProps = {
@@ -63,7 +67,7 @@ Divider.defaultProps = {
 };
 
 Divider.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 
 exports.default = Divider;

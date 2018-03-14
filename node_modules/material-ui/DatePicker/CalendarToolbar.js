@@ -28,6 +28,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _IconButton = require('../IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
@@ -158,11 +162,11 @@ CalendarToolbar.defaultProps = {
   prevMonth: true
 };
 process.env.NODE_ENV !== "production" ? CalendarToolbar.propTypes = {
-  DateTimeFormat: _react.PropTypes.func.isRequired,
-  displayDate: _react.PropTypes.object.isRequired,
-  locale: _react.PropTypes.string.isRequired,
-  nextMonth: _react.PropTypes.bool,
-  onMonthChange: _react.PropTypes.func,
-  prevMonth: _react.PropTypes.bool
+  DateTimeFormat: _propTypes2.default.func.isRequired,
+  displayDate: _propTypes2.default.object.isRequired,
+  locale: _propTypes2.default.string.isRequired,
+  nextMonth: _propTypes2.default.bool,
+  onMonthChange: _propTypes2.default.func,
+  prevMonth: _propTypes2.default.bool
 } : void 0;
 exports.default = CalendarToolbar;

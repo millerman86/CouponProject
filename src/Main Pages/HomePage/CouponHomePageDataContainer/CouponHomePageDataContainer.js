@@ -24,7 +24,7 @@ class CouponHomePageDataContainer extends React.Component {
 
 
   forwardPress = (e = 16) => {
-    if (parseInt(e) >= 16) {
+    if (parseInt(e, 10) >= 16) {
       fetch(`${DataBaseEndPoint}/v1/coupons?page=${e}&direction=increase`)
         .then(function (response) {
           return response.json()
@@ -41,9 +41,6 @@ class CouponHomePageDataContainer extends React.Component {
   };
 
   backwardPress = (e = 0) => {
-    if (e = 0) {
-      console.log('hello');
-    } else {
       fetch(`${DataBaseEndPoint}/v1/coupons?page=${e}&direction=decrease`)
         .then(function (response) {
           return response.json()
@@ -55,12 +52,11 @@ class CouponHomePageDataContainer extends React.Component {
       }).catch(function (ex) {
         console.log('parsing failed', ex)
       })
-    }
+
   };
 
 
   updateCompanyFilter = (e) => {
-    console.log('in update company');
     fetch(`${DataBaseEndPoint}/v1/coupons?company=${e}`)
       .then(function (response) {
         return response.json()
@@ -72,7 +68,6 @@ class CouponHomePageDataContainer extends React.Component {
   };
 
   updatePriceFilter = (e, pageBase = 0, direction = 'increase') => {
-    console.log('in update price');
     fetch(`${DataBaseEndPoint}/v1/coupons?price=${e}&pageBase=${pageBase}&direction=${direction}`)
       .then(function (response) {
         return response.json()
@@ -85,7 +80,6 @@ class CouponHomePageDataContainer extends React.Component {
   };
 
   updateDealFilter = (e) => {
-    console.log('in update price');
     fetch(`${DataBaseEndPoint}/v1/coupons?deal=${e}`)
       .then(function (response) {
         return response.json()
@@ -98,7 +92,6 @@ class CouponHomePageDataContainer extends React.Component {
   };
 
   updateProductFilter = (e) => {
-    console.log('in update product');
     fetch(`${DataBaseEndPoint}/v1/coupons?product=${e}`)
       .then(function (response) {
         return response.json()

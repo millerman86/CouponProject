@@ -27,13 +27,13 @@ class CreateAccount extends React.Component {
             fetch(`${DataBaseEndPoint}/v1/createuser`, myInit)
                 .then(function (response) {
                     return response.json()
-                }).then((token) => {
-                console.log('Here is your token', token);
+                }).then((response) => {
 
-                sessionStorage.setItem('token', token.token);
-                sessionStorage.setItem('username', token.username);
-                sessionStorage.setItem('usertype', token.type);
-                console.log(token);
+                console.log('Here is your token', response.token);
+
+                sessionStorage.setItem('token', response.token);
+                sessionStorage.setItem('username', response.username);
+                sessionStorage.setItem('usertype', response.type);
                 this.props.history.push('/HomePage');
             }).catch(function (ex) {
                 console.log('parsing failed', ex)

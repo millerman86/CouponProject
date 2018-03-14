@@ -20,6 +20,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Subheader = function Subheader(props, context) {
@@ -57,15 +61,15 @@ process.env.NODE_ENV !== "production" ? Subheader.propTypes = {
   /**
    * Node that will be placed inside the `Subheader`.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * If true, the `Subheader` will be indented.
    */
-  inset: _react.PropTypes.bool,
+  inset: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 
 Subheader.defaultProps = {
@@ -73,7 +77,7 @@ Subheader.defaultProps = {
 };
 
 Subheader.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 
 exports.default = Subheader;

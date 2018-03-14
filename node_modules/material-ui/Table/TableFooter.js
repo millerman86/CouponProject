@@ -44,6 +44,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _TableRowColumn = require('./TableRowColumn');
 
 var _TableRowColumn2 = _interopRequireDefault(_TableRowColumn);
@@ -121,7 +125,7 @@ TableFooter.defaultProps = {
   style: {}
 };
 TableFooter.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? TableFooter.propTypes = {
   /**
@@ -133,18 +137,18 @@ process.env.NODE_ENV !== "production" ? TableFooter.propTypes = {
    * the checkbox column does not create an offset that needs
    * to be accounted for manually.
    */
-  adjustForCheckbox: _react.PropTypes.bool,
+  adjustForCheckbox: _propTypes2.default.bool,
   /**
    * Children passed to table footer.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * The css class name of the root element.
    */
-  className: _react.PropTypes.string,
+  className: _propTypes2.default.string,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = TableFooter;

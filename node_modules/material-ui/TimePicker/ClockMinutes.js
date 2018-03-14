@@ -28,6 +28,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _ClockNumber = require('./ClockNumber');
 
 var _ClockNumber2 = _interopRequireDefault(_ClockNumber);
@@ -202,10 +206,10 @@ ClockMinutes.defaultProps = {
   onChange: function onChange() {}
 };
 ClockMinutes.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? ClockMinutes.propTypes = {
-  initialMinutes: _react.PropTypes.number,
-  onChange: _react.PropTypes.func
+  initialMinutes: _propTypes2.default.number,
+  onChange: _propTypes2.default.func
 } : void 0;
 exports.default = ClockMinutes;

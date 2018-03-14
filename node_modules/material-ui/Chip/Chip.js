@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _keycode = require('keycode');
 
 var _keycode2 = _interopRequireDefault(_keycode);
@@ -277,67 +281,67 @@ Chip.defaultProps = {
   onTouchEnd: function onTouchEnd() {},
   onTouchStart: function onTouchStart() {}
 };
-Chip.contextTypes = { muiTheme: _react.PropTypes.object.isRequired };
+Chip.contextTypes = { muiTheme: _propTypes2.default.object.isRequired };
 process.env.NODE_ENV !== "production" ? Chip.propTypes = {
   /**
    * Override the background color of the chip.
    */
-  backgroundColor: _react.PropTypes.string,
+  backgroundColor: _propTypes2.default.string,
   /**
    * Used to render elements inside the Chip.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * CSS `className` of the root element.
    */
-  className: _react.PropTypes.node,
+  className: _propTypes2.default.node,
   /**
    * The element to use as the container for the Chip. Either a string to
    * use a DOM element or a ReactElement.
    */
-  containerElement: _react.PropTypes.oneOfType([_react.PropTypes.string, _react.PropTypes.element]),
+  containerElement: _propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.element]),
   /**
    * Override the label color.
    */
-  labelColor: _react.PropTypes.string,
+  labelColor: _propTypes2.default.string,
   /**
    * Override the inline-styles of the label.
    */
-  labelStyle: _react.PropTypes.object,
+  labelStyle: _propTypes2.default.object,
   /** @ignore */
-  onBlur: _react.PropTypes.func,
+  onBlur: _propTypes2.default.func,
   /** @ignore */
-  onFocus: _react.PropTypes.func,
+  onFocus: _propTypes2.default.func,
   /** @ignore */
-  onKeyDown: _react.PropTypes.func,
+  onKeyDown: _propTypes2.default.func,
   /** @ignore */
-  onKeyboardFocus: _react.PropTypes.func,
+  onKeyboardFocus: _propTypes2.default.func,
   /** @ignore */
-  onMouseDown: _react.PropTypes.func,
+  onMouseDown: _propTypes2.default.func,
   /** @ignore */
-  onMouseEnter: _react.PropTypes.func,
+  onMouseEnter: _propTypes2.default.func,
   /** @ignore */
-  onMouseLeave: _react.PropTypes.func,
+  onMouseLeave: _propTypes2.default.func,
   /** @ignore */
-  onMouseUp: _react.PropTypes.func,
+  onMouseUp: _propTypes2.default.func,
   /**
    * Callback function fired when the delete icon is clicked. If set, the delete icon will be shown.
    * @param {object} event `touchTap` event targeting the element.
    */
-  onRequestDelete: _react.PropTypes.func,
+  onRequestDelete: _propTypes2.default.func,
   /** @ignore */
-  onTouchEnd: _react.PropTypes.func,
+  onTouchEnd: _propTypes2.default.func,
   /** @ignore */
-  onTouchStart: _react.PropTypes.func,
+  onTouchStart: _propTypes2.default.func,
   /**
    * Callback function fired when the `Chip` element is touch-tapped.
    *
    * @param {object} event TouchTap event targeting the element.
    */
-  onTouchTap: _react.PropTypes.func,
+  onTouchTap: _propTypes2.default.func,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = Chip;

@@ -21,6 +21,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -124,11 +128,11 @@ process.env.NODE_ENV !== "production" ? SnackbarBody.propTypes = {
   /**
    * The label for the action on the snackbar.
    */
-  action: _react.PropTypes.node,
+  action: _propTypes2.default.node,
   /**
    * Override the inline-styles of the content element.
    */
-  contentStyle: _react.PropTypes.object,
+  contentStyle: _propTypes2.default.object,
   /**
    * The message to be displayed.
    *
@@ -136,31 +140,31 @@ process.env.NODE_ENV !== "production" ? SnackbarBody.propTypes = {
    * ensure that the same object remains as the `message` property if you want to avoid the `Snackbar` hiding and
    * showing again)
    */
-  message: _react.PropTypes.node.isRequired,
+  message: _propTypes2.default.node.isRequired,
   /**
    * Fired when the action button is touchtapped.
    *
    * @param {object} event Action button event.
    */
-  onActionTouchTap: _react.PropTypes.func,
+  onActionTouchTap: _propTypes2.default.func,
   /**
    * @ignore
    * Controls whether the `Snackbar` is opened or not.
    */
-  open: _react.PropTypes.bool.isRequired,
+  open: _propTypes2.default.bool.isRequired,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * @ignore
    * Width of the screen.
    */
-  width: _react.PropTypes.number.isRequired
+  width: _propTypes2.default.number.isRequired
 } : void 0;
 
 SnackbarBody.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 
 exports.default = (0, _withWidth2.default)()(SnackbarBody);

@@ -40,9 +40,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = require('../utils/propTypes');
+var _propTypes = require('prop-types');
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _propTypes3 = require('../utils/propTypes');
+
+var _propTypes4 = _interopRequireDefault(_propTypes3);
 
 var _transitions = require('../styles/transitions');
 
@@ -115,33 +119,33 @@ Paper.defaultProps = {
   zDepth: 1
 };
 Paper.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? Paper.propTypes = {
   /**
    * Children passed into the paper element.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * Set to true to generate a circlular paper container.
    */
-  circle: _react.PropTypes.bool,
+  circle: _propTypes2.default.bool,
   /**
    * By default, the paper container will have a border radius.
    * Set this to false to generate a container with sharp corners.
    */
-  rounded: _react.PropTypes.bool,
+  rounded: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * Set to false to disable CSS transitions for the paper element.
    */
-  transitionEnabled: _react.PropTypes.bool,
+  transitionEnabled: _propTypes2.default.bool,
   /**
    * This number represents the zDepth of the paper shadow.
    */
-  zDepth: _propTypes2.default.zDepth
+  zDepth: _propTypes4.default.zDepth
 } : void 0;
 exports.default = Paper;

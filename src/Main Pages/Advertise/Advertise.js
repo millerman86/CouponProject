@@ -117,7 +117,7 @@ let cents = [
 const myAuth = {
     isAuthenticated: function () {
         const result = sessionStorage.getItem('token');
-        return true;
+        return !!result;
     }
 };
 
@@ -281,11 +281,11 @@ class AdvertiseProducts extends React.Component {
             } else if (evt.target.value.length >= 1) {
                 for (let verifier of cents) {
                     if (evt.target.value.includes(verifier)) {
-                        if (!String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
+                        if (!String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
                             alert("Enter price only. For example: 523.36 or $523.36. Price must be above $1");
                         }
                         else if (!evt.target.value.includes('$')
-                            && String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
+                            && String(evt.target.value).match(/^(\$|)([1-9]\d{0,2}(,\d{3})*|([1-9]\d*))(\.\d{2})?$/)) {
                             this.setState({price: "$" + evt.target.value})
                         } else if (!isNumeric(evt.target.value)) {
                             alert('Only numbers allowed!');
@@ -300,7 +300,7 @@ class AdvertiseProducts extends React.Component {
     };
 
     onDealSelect = (evt) => {
-        this.setState({deal: '%' + evt.target.value + ' ' + 'OFF'});
+        this.setState({deal: `% ${evt.target.value} OFF`});
     };
 
     onDealTypeSelect = (evt) => {

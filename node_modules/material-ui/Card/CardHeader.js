@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _Avatar = require('../Avatar');
 
 var _Avatar2 = _interopRequireDefault(_Avatar);
@@ -152,70 +156,70 @@ CardHeader.defaultProps = {
   avatar: null
 };
 CardHeader.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? CardHeader.propTypes = {
   /**
    * If true, a click on this card component expands the card.
    */
-  actAsExpander: _react.PropTypes.bool,
+  actAsExpander: _propTypes2.default.bool,
   /**
    * This is the [Avatar](/#/components/avatar) element to be displayed on the Card Header.
    * If `avatar` is an `Avatar` or other element, it will be rendered.
    * If `avatar` is a string, it will be used as the image `src` for an `Avatar`.
    */
-  avatar: _react.PropTypes.node,
+  avatar: _propTypes2.default.node,
   /**
    * Can be used to render elements inside the Card Header.
    */
-  children: _react.PropTypes.node,
+  children: _propTypes2.default.node,
   /**
    * Can be used to pass a closeIcon if you don't like the default expandable close Icon.
    */
-  closeIcon: _react.PropTypes.node,
+  closeIcon: _propTypes2.default.node,
   /**
    * If true, this card component is expandable.
    */
-  expandable: _react.PropTypes.bool,
+  expandable: _propTypes2.default.bool,
   /**
    * Can be used to pass a openIcon if you don't like the default expandable open Icon.
    */
-  openIcon: _react.PropTypes.node,
+  openIcon: _propTypes2.default.node,
   /**
    * If true, this card component will include a button to expand the card.
    */
-  showExpandableButton: _react.PropTypes.bool,
+  showExpandableButton: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
+  style: _propTypes2.default.object,
   /**
    * Can be used to render a subtitle in Card Header.
    */
-  subtitle: _react.PropTypes.node,
+  subtitle: _propTypes2.default.node,
   /**
    * Override the subtitle color.
    */
-  subtitleColor: _react.PropTypes.string,
+  subtitleColor: _propTypes2.default.string,
   /**
    * Override the inline-styles of the subtitle.
    */
-  subtitleStyle: _react.PropTypes.object,
+  subtitleStyle: _propTypes2.default.object,
   /**
    * Override the inline-styles of the text.
    */
-  textStyle: _react.PropTypes.object,
+  textStyle: _propTypes2.default.object,
   /**
    * Can be used to render a title in Card Header.
    */
-  title: _react.PropTypes.node,
+  title: _propTypes2.default.node,
   /**
    * Override the title color.
    */
-  titleColor: _react.PropTypes.string,
+  titleColor: _propTypes2.default.string,
   /**
    * Override the inline-styles of the title.
    */
-  titleStyle: _react.PropTypes.object
+  titleStyle: _propTypes2.default.object
 } : void 0;
 exports.default = CardHeader;

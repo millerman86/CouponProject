@@ -1,5 +1,4 @@
-import React from 'react';
-import {VisibilityFilters, SET_VISIBILITY_FILTER} from './actions';
+import {SET_VISIBILITY_FILTER} from './actions';
 
 
 // INITIAL STATE IS 'SORT-PRODUCTS'

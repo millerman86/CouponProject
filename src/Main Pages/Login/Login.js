@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 /**
  * Created by amrenmiller on 4/6/17.
  */
@@ -7,6 +6,7 @@ import React from 'react';
 import DataBaseEndPoint from '../../DataBaseEndPoint';
 import { addExcludedRoute, removeExcludedRoute } from '../../Redux/actions';
 import { connect } from 'react-redux';
+import {NavLink} from 'react-router-dom'
 
 
 
@@ -33,6 +33,16 @@ class Login extends React.Component {
             }).then((reply) => {
             sessionStorage.setItem('token', reply.token);
             sessionStorage.setItem('username', username);
+
+            if (reply.message === 'User not found!!!!') {
+                console.log(reply.message);
+                return
+            }
+            if (reply.message === 'Password incorrect') {
+                console.log(reply.message);
+                return
+            }
+
             if (reply.type) {
                 sessionStorage.setItem('usertype', reply.type);
             }
@@ -42,12 +52,10 @@ class Login extends React.Component {
             this.props.dispatch(removeExcludedRoute('advertise'));
 
 
-
-            this.props.history.push('/HomePage');
+            this.props.history.push('/homepage');
         }).catch(function (ex) {
             console.log('parsing failed', ex)
         });
-
     };
 
     render() {
@@ -77,7 +85,7 @@ class Login extends React.Component {
                                 <br />
                                 <br />
                                 <button className={`ui button`} type="submit">Submit</button>
-                                <Link to='/createaccount'><p>Not a member? Create a user account!</p></Link>
+                                <NavLink to='/createaccount'><p>Not a member? Create a user account!</p></NavLink>
                             </div>
                         </div>
                     </div>

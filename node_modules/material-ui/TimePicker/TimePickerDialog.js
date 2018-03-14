@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactEventListener = require('react-event-listener');
 
 var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
@@ -186,18 +190,18 @@ TimePickerDialog.defaultProps = {
   cancelLabel: 'Cancel'
 };
 TimePickerDialog.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? TimePickerDialog.propTypes = {
-  autoOk: _react.PropTypes.bool,
-  bodyStyle: _react.PropTypes.object,
-  cancelLabel: _react.PropTypes.node,
-  format: _react.PropTypes.oneOf(['ampm', '24hr']),
-  initialTime: _react.PropTypes.object,
-  okLabel: _react.PropTypes.node,
-  onAccept: _react.PropTypes.func,
-  onDismiss: _react.PropTypes.func,
-  onShow: _react.PropTypes.func,
-  style: _react.PropTypes.object
+  autoOk: _propTypes2.default.bool,
+  bodyStyle: _propTypes2.default.object,
+  cancelLabel: _propTypes2.default.node,
+  format: _propTypes2.default.oneOf(['ampm', '24hr']),
+  initialTime: _propTypes2.default.object,
+  okLabel: _propTypes2.default.node,
+  onAccept: _propTypes2.default.func,
+  onDismiss: _propTypes2.default.func,
+  onShow: _propTypes2.default.func,
+  style: _propTypes2.default.object
 } : void 0;
 exports.default = TimePickerDialog;

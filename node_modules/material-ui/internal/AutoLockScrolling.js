@@ -26,6 +26,10 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 
 var _react = require('react');
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var originalBodyOverflow = null;
@@ -115,6 +119,6 @@ var AutoLockScrolling = function (_Component) {
 }(_react.Component);
 
 process.env.NODE_ENV !== "production" ? AutoLockScrolling.propTypes = {
-  lock: _react.PropTypes.bool.isRequired
+  lock: _propTypes2.default.bool.isRequired
 } : void 0;
 exports.default = AutoLockScrolling;

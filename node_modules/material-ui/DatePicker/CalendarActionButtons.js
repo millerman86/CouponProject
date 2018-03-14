@@ -28,6 +28,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _FlatButton = require('../FlatButton');
 
 var _FlatButton2 = _interopRequireDefault(_FlatButton);
@@ -91,10 +95,10 @@ var CalendarActionButton = function (_Component) {
 }(_react.Component);
 
 process.env.NODE_ENV !== "production" ? CalendarActionButton.propTypes = {
-  autoOk: _react.PropTypes.bool,
-  cancelLabel: _react.PropTypes.node,
-  okLabel: _react.PropTypes.node,
-  onTouchTapCancel: _react.PropTypes.func,
-  onTouchTapOk: _react.PropTypes.func
+  autoOk: _propTypes2.default.bool,
+  cancelLabel: _propTypes2.default.node,
+  okLabel: _propTypes2.default.node,
+  onTouchTapCancel: _propTypes2.default.func,
+  onTouchTapOk: _propTypes2.default.func
 } : void 0;
 exports.default = CalendarActionButton;

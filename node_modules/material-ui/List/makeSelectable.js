@@ -41,6 +41,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _colorManipulator = require('../utils/colorManipulator');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -155,12 +159,12 @@ var makeSelectable = function makeSelectable(MyComponent) {
     }]);
     return _class;
   }(_react.Component), _class.propTypes = {
-    children: _react.PropTypes.node,
-    onChange: _react.PropTypes.func,
-    selectedItemStyle: _react.PropTypes.object,
-    value: _react.PropTypes.any
+    children: _propTypes2.default.node,
+    onChange: _propTypes2.default.func,
+    selectedItemStyle: _propTypes2.default.object,
+    value: _propTypes2.default.any
   }, _class.contextTypes = {
-    muiTheme: _react.PropTypes.object.isRequired
+    muiTheme: _propTypes2.default.object.isRequired
   }, _temp2;
 };
 

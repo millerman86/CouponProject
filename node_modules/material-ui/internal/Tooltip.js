@@ -40,6 +40,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _transitions = require('../styles/transitions');
 
 var _transitions2 = _interopRequireDefault(_transitions);
@@ -204,21 +208,21 @@ var Tooltip = function (_Component) {
 }(_react.Component);
 
 Tooltip.contextTypes = {
-  muiTheme: _react.PropTypes.object.isRequired
+  muiTheme: _propTypes2.default.object.isRequired
 };
 process.env.NODE_ENV !== "production" ? Tooltip.propTypes = {
   /**
    * The css class name of the root element.
    */
-  className: _react.PropTypes.string,
-  horizontalPosition: _react.PropTypes.oneOf(['left', 'right', 'center']),
-  label: _react.PropTypes.node.isRequired,
-  show: _react.PropTypes.bool,
+  className: _propTypes2.default.string,
+  horizontalPosition: _propTypes2.default.oneOf(['left', 'right', 'center']),
+  label: _propTypes2.default.node.isRequired,
+  show: _propTypes2.default.bool,
   /**
    * Override the inline-styles of the root element.
    */
-  style: _react.PropTypes.object,
-  touch: _react.PropTypes.bool,
-  verticalPosition: _react.PropTypes.oneOf(['top', 'bottom'])
+  style: _propTypes2.default.object,
+  touch: _propTypes2.default.bool,
+  verticalPosition: _propTypes2.default.oneOf(['top', 'bottom'])
 } : void 0;
 exports.default = Tooltip;

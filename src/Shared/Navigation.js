@@ -7,7 +7,6 @@ import {connect} from 'react-redux';
 // SINCE THIS COMPONENT PROBABLY SHOULDN'T NEED TO HOLD STATE, I'LL JUST LEAVE IT AS STC FOR NOW, AND LISTEN FOR STATE FROM THE REDUX STORE USING THE OBSERVER PATTERN
 
 let Navigation = ({excludedRoutes}) => {
-  console.log("EXCLUDED ROUTES ARE: ", excludedRoutes);
   return (
     <div className="ui seven buttons">
       {excludedRoutes.includes('homepage') ? null : (<button className='ui button'><NavLink to='/homepage'><span className='black-letters'><i className='home icon' />Home</span></NavLink></button>)}
