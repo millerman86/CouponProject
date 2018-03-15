@@ -48,7 +48,11 @@ let CouponCard = (props) => (
           <div className='row'>
             <div className='col-xs-12'>
               <div className="clip-button text-left">
-                <button onClick={() => props.couponClip(coupon.id, coupon)}><i className="cut icon">
+                <button onClick={() => {
+                  console.log(coupon.id, coupon)
+                  props.couponClip(coupon.id, coupon)
+
+                }}><i className="cut icon">
                 </i>Clip
                 </button>
                 <span className='float-right coupon-code'>{coupon.id}</span></div>

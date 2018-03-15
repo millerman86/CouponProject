@@ -104,8 +104,7 @@ class CouponHomePageDataContainer extends React.Component {
   };
 
   handleCouponClip = (couponId, coupon) => {
-    console.log(getUser(), couponId + 'weoiuj');
-
+    console.log(couponId, coupon);
     let payload = {
       method: 'POST',
       headers: {
@@ -113,19 +112,24 @@ class CouponHomePageDataContainer extends React.Component {
       },
       body: JSON.stringify({
         couponId,
+        customer: getUser()
       })
     };
 
-    fetch(`${DataBaseEndPoint}/v1/clipped/${getUser()}`, payload)
+    fetch(`${DataBaseEndPoint}/v1/clipped`, payload)
       .then(function (response) {
         return response.json()
-      }).then((coupons) => {
+      }).then((reply) => {
       // WHEN THE COUPON IS SUCCESSFULLY CLIPPED, THEN PERSIST THE COUPON TO THE LOCAL STORAGE
+      if (reply.message === 'USER NOT FOUND') return;
       console.log('SENDING YOUR COUPON TO THE REDUX STORE', coupon);
+
+
       this.props.dispatch(clipCoupon(coupon)); // THIS SHOULD WORK JUST FINE, BUT THE CONNECT FUNCTION HAPPENS FROM HOMEPAGE
 
-      this.setState({regularCoupons: coupons[0].regular});
-      this.setState({featuredCoupons: coupons[0].featured});
+
+      this.setState({regularCoupons: reply.regular});
+      this.setState({featuredCoupons: reply.featured});
       this.forceUpdate();
     }).catch(function (ex) {
       console.log('parsing failed', ex)
