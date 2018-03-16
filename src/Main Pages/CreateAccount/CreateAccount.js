@@ -25,6 +25,8 @@ class CreateAccount extends React.Component {
         })
       };
 
+      const username = this.refs.username;
+
       fetch(`${DataBaseEndPoint}/v1/createuser`, myInit)
         .then(function (response) {
           return response.json()
@@ -34,7 +36,7 @@ class CreateAccount extends React.Component {
         console.log('Here is your message', response.message);
 
         sessionStorage.setItem('token', response.token);
-        sessionStorage.setItem('username', response.username);
+        sessionStorage.setItem('username', username); // I'M JUST GOING TO TAKE THE USERNAME FROM THE LOCAL VARIABLE INSTEAD OF FROM THE RESPONSE
 
         // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
         this.props.dispatch(addExcludedRoute('login'));
