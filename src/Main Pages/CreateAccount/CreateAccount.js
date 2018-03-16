@@ -38,11 +38,12 @@ class CreateAccount extends React.Component {
         sessionStorage.setItem('token', response.token);
         sessionStorage.setItem('username', username); // I'M JUST GOING TO TAKE THE USERNAME FROM THE LOCAL VARIABLE INSTEAD OF FROM THE RESPONSE
 
+        if (!response.token) return;
+
         // THIS WILL EXCLUDE THE LOGIN ROUTE, BECAUSE AFTER YOU LOGIN, YOU WON'T NEED TO HAVE THE LINK BEING DISPLAYED ANYMORE
         this.props.dispatch(addExcludedRoute('login'));
         this.props.dispatch(removeExcludedRoute('advertise'));
 
-        if (!response.token) return;
         this.props.history.push('/homepage');
       }).catch(function (ex) {
         console.log('parsing failed', ex)
