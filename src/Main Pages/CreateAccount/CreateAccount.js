@@ -25,8 +25,6 @@ class CreateAccount extends React.Component {
         })
       };
 
-      const username = this.refs.username;
-
       fetch(`${DataBaseEndPoint}/v1/createuser`, myInit)
         .then(function (response) {
           return response.json()
@@ -36,7 +34,7 @@ class CreateAccount extends React.Component {
         console.log('Here is your message', response.message);
 
         sessionStorage.setItem('token', response.token);
-        sessionStorage.setItem('username', username); // I'M JUST GOING TO TAKE THE USERNAME FROM THE LOCAL VARIABLE INSTEAD OF FROM THE RESPONSE
+        sessionStorage.setItem('username', response.username); // I'M JUST GOING TO TAKE THE USERNAME FROM THE LOCAL VARIABLE INSTEAD OF FROM THE RESPONSE
 
         if (!response.token) return;
 
@@ -57,6 +55,10 @@ class CreateAccount extends React.Component {
   render() {
     return (
       <div>
+        <h4 className='center-align'>YOU CAN CREATE YOUR VERY OWN ACCOUNT RIGHT HERE, AND RECEIVE A JSON WEB TOKEN</h4>
+        <p className='center-align'>Your password will be encrypted using bcrypt, a popular NPM package</p>
+        <p className='center-align'>After you are redirected back to the homepage, you will be able to CLIP COUPONS,
+          which saves the id of the coupon to your account entry in the database</p>
         <form className='ui form' onSubmit={this.handleSubmit}>
           <div className='col-xs-12'>
             <div className='col-xs-2'>
@@ -89,8 +91,7 @@ class CreateAccount extends React.Component {
                 <br />
                 <br />
 
-                <button className="ui button" type="submit">Submit</button>
-                <NavLink to='/createaccount'><p>Not a member? Create a user account!</p></NavLink>
+                <button className={`ui button`} type="submit" >Submit</button>
               </div>
             </div>
           </div>

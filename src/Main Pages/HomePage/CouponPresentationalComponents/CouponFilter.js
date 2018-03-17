@@ -105,9 +105,10 @@ export default class CouponFilter extends React.Component {
           <br />
           <br />
 
-          <p className='adjust-price'>Adjust Price</p>
+          <p className='adjust-price'>ADJUST PRICE HERE</p>
 
           <MySlider className='my-slider' priceFilter={this.handlePriceAdjust}/>
+
 
           <div className='remove-margin'>
             Back

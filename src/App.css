@@ -333,11 +333,11 @@
   margin: auto;
   text-align: center;
 }
+margin-top: -50px;
 
 .logout-button {
   position: relative;
   margin: auto;
-  margin-top: -50px;
 
 }
 
@@ -368,3 +368,4 @@
 .banner-subheading {
   font-size: 24px;
 }
+

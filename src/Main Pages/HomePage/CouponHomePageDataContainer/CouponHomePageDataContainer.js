@@ -111,7 +111,7 @@ class CouponHomePageDataContainer extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        couponId,
+        couponId: couponId,
         customer: getUser()
       })
     };

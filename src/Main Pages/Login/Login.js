@@ -11,7 +11,6 @@ import {NavLink} from 'react-router-dom'
 
 class Login extends React.Component {
 
-
   // THIS LOGIN FUNCTION IS THE SIMPLEST POSSIBLE WAY TO DO LOGIN LOGIC THAT YOU CAN POSSIBLY DO
   handleLogin = (evt) => {
     evt.preventDefault();
@@ -31,20 +30,12 @@ class Login extends React.Component {
         return response.json()
       }).then((reply) => {
 
-
-      if (reply.type) {
-        sessionStorage.setItem('usertype', reply.type);
-      }
-
-
       console.log(reply.token);
 
       if (reply.statusCode === 404) {
         console.log(404);
         return; // NOT FOUND STATUS CODE
       }
-
-
 
       if (reply.error === 'Not Found') {
         console.log(reply.error);
@@ -91,7 +82,10 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className='login-margin'>
+      <div >
+        <h4 className='center-align'>If you would not like to create a new account, try using a dummy account provided for you below</h4>
+        <p className='center-align'>username: 1234</p>
+        <p className='center-align'>password: 1234</p>
         <form className='ui form' onSubmit={this.handleLogin}>
           <div className='col-xs-12'>
             <div className='col-xs-2'>
@@ -100,7 +94,6 @@ class Login extends React.Component {
             </div>
             <div className='col-xs-1'>
             </div>
-
 
             <div className='col-xs-2'>
               <h3 className='align-center'>LOGIN</h3>
